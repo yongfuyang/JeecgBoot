@@ -1,0 +1,5848 @@
+# PREVIEW — pending human confirmation
+model_type: REPORT
+version: "6.0"
+domain: jeecg
+description: "jeecg-aio 逆向 M7 报表模型（列表查询 / 视图 / 统计）"
+
+query_reports:
+  - id: RPT-AIRAG-001
+    name: 应用管理
+    description: "应用管理：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_App
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/app/controller/AiragAppController.java#AiragAppController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-002
+    name: 知识库管理
+    description: "知识库管理：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_Knowledge
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/llm/controller/AiragKnowledgeController.java#AiragKnowledgeController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-003
+    name: 知识库管理（/airag/knowledge）
+    description: "知识库管理（/airag/knowledge）：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_Knowledge2
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/llm/controller/AiragKnowledgeController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-004
+    name: "/airag/airagMcp 接口组"
+    description: "/airag/airagMcp 接口组：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_AiragMcp
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/llm/controller/AiragMcpController.java#AiragMcpController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-005
+    name: "/airag/airagModel 接口组"
+    description: "/airag/airagModel 接口组：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_AiragModel
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/llm/controller/AiragModelController.java#AiragModelController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-006
+    name: "/airag/ocr 接口组"
+    description: "/airag/ocr 接口组：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_Ocr
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/ocr/controller/AiOcrController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-007
+    name: "/airag/extData 接口组"
+    description: "/airag/extData 接口组：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_ExtData
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/prompts/controller/AiragExtDataController.java#AiragExtDataController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-008
+    name: 提示词管理
+    description: "提示词管理：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_Prompts
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/prompts/controller/AiragPromptsController.java#AiragPromptsController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-009
+    name: 视频管理
+    description: "视频管理：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_Video
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/video/controller/VideoGenerationController.java#VideoGenerationController#queryTask（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-010
+    name: "/airag/voice 接口组"
+    description: "/airag/voice 接口组：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_Voice
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/voice/controller/VoiceController.java#VoiceController#getVoiceRecords（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-AIRAG-011
+    name: word模板管理
+    description: "word模板管理：以 应用 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: AiragApp_Word
+    source_aggregate: AGG-AIRAG-005
+    sourceObjects:
+      - ref: airag_app
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(36)
+      - name: create_by
+        title: 创建人
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: sys_org_code
+        title: 所属部门
+        type: varchar(64)
+      - name: tenant_id
+        title: 租户id
+        type: varchar(32)
+      - name: name
+        title: 应用名称
+        type: varchar(100)
+      - name: descr
+        title: 应用描述
+        type: varchar(255)
+      - name: icon
+        title: 应用图标
+        type: varchar(255)
+      - name: type
+        title: 应用类型
+        type: varchar(50)
+      - name: prologue
+        title: 开场白
+        type: text
+      - name: prompt
+        title: 提示词
+        type: text
+      - name: model_id
+        title: 模型id
+        type: varchar(36)
+      - name: knowledge_ids
+        title: 知识库
+        type: varchar(255)
+      - name: flow_id
+        title: 流程id（多个以逗号分隔）
+        type: varchar(1000)
+      - name: status
+        title: 状态（enable=启用、disable=禁用、release=发布）
+        type: varchar(20)
+      - name: msg_num
+        title: 历史消息数
+        type: int(11)
+      - name: metadata
+        title: 元数据
+        type: varchar(500)
+      - name: preset_question
+        title: 预设问题
+        type: text
+      - name: quick_command
+        title: 快捷指令
+        type: varchar(500)
+      - name: plugins
+        title: 插件
+        type: text
+      - name: memory_id
+        title: 记忆库(知识库的id)
+        type: varchar(32)
+      - name: variables
+        title: 存放变量的配置
+        type: text
+      - name: iz_open_memory
+        title: "是否开启记忆(0 不开启，1开启)"
+        type: int(1)
+      - name: memory_prompt
+        title: 记忆和变量提示词
+        type: text
+      - name: share_token
+        title: 分享令牌（匿名聊天凭证）
+        type: varchar(64)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/wordtpl/controller/AigcWordTemplateController.java#AigcWordTemplateController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-OPENAPI-012
+    name: 接口管理
+    description: "接口管理：以 打开接口 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: OpenApi_Api
+    source_aggregate: AGG-OPENAPI-082
+    sourceObjects:
+      - ref: open_api
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: name
+        title: 接口名称
+        type: varchar(100)
+      - name: request_method
+        title: 请求方法
+        type: varchar(50)
+      - name: request_url
+        title: 接口地址
+        type: varchar(300)
+      - name: white_list
+        title: IP白名单，支持IP、CIDR、通配符，逗号或换行分隔
+        type: text
+      - name: remarks
+        title: 白名单备注说明
+        type: text
+      - name: description
+        title: 接口描述
+        type: varchar(255)
+      - name: request_body
+        title: 请求体内容
+        type: varchar(255)
+      - name: origin_url
+        title: 原始地址
+        type: varchar(255)
+      - name: status
+        title: 状态
+        type: int(10)
+      - name: del_flag
+        title: 删除标识
+        type: int(10)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 修改人
+        type: varchar(32)
+      - name: update_time
+        title: 修改时间
+        type: datetime
+      - name: headers_json
+        title: 请求头json
+        type: json
+      - name: params_json
+        title: 请求参数json
+        type: json
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/MockController.java#MockController#getJsonData（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-DEMO-013
+    name: "/test/jeecgDemo 接口组"
+    description: "/test/jeecgDemo 接口组：以 在线表单示例数据 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: TestDemo_JeecgDemo
+    source_aggregate: AGG-ONLINE-157
+    sourceObjects:
+      - ref: test_demo
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(36)
+      - name: create_by
+        title: 创建人登录名称
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人登录名称
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: name
+        title: 用户名
+        type: varchar(200)
+      - name: sex
+        title: 性别
+        type: varchar(32)
+      - name: age
+        title: 年龄
+        type: int(32)
+      - name: descc
+        title: 描述
+        type: varchar(500)
+      - name: birthday
+        title: 生日
+        type: datetime
+      - name: user_code
+        title: 用户编码
+        type: varchar(32)
+      - name: file_kk
+        title: 附件
+        type: varchar(500)
+      - name: top_pic
+        title: 头像
+        type: varchar(500)
+      - name: chegnshi
+        title: 城市
+        type: varchar(300)
+      - name: ceck
+        title: checkbox
+        type: varchar(32)
+      - name: xiamuti
+        title: 下拉多选
+        type: varchar(100)
+      - name: search_sel
+        title: 搜索下拉
+        type: varchar(100)
+      - name: pop
+        title: 弹窗
+        type: varchar(32)
+      - name: sel_table
+        title: 下拉字典表
+        type: varchar(32)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/test/controller/JeecgDemoController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-DEMO-014
+    name: "/test/jeecgDemo 接口组（/test/jeecgDemo）"
+    description: "/test/jeecgDemo 接口组（/test/jeecgDemo）：以 在线表单示例数据 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: TestDemo_JeecgDemo2
+    source_aggregate: AGG-ONLINE-157
+    sourceObjects:
+      - ref: test_demo
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(36)
+      - name: create_by
+        title: 创建人登录名称
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人登录名称
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: name
+        title: 用户名
+        type: varchar(200)
+      - name: sex
+        title: 性别
+        type: varchar(32)
+      - name: age
+        title: 年龄
+        type: int(32)
+      - name: descc
+        title: 描述
+        type: varchar(500)
+      - name: birthday
+        title: 生日
+        type: datetime
+      - name: user_code
+        title: 用户编码
+        type: varchar(32)
+      - name: file_kk
+        title: 附件
+        type: varchar(500)
+      - name: top_pic
+        title: 头像
+        type: varchar(500)
+      - name: chegnshi
+        title: 城市
+        type: varchar(300)
+      - name: ceck
+        title: checkbox
+        type: varchar(32)
+      - name: xiamuti
+        title: 下拉多选
+        type: varchar(100)
+      - name: search_sel
+        title: 搜索下拉
+        type: varchar(100)
+      - name: pop
+        title: 弹窗
+        type: varchar(32)
+      - name: sel_table
+        title: 下拉字典表
+        type: varchar(32)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/test/controller/JeecgDemoController.java#JeecgDemoController#redisSet（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-DEMO-015
+    name: 订单管理
+    description: "订单管理：以 在线表单示例数据 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: TestDemo_Order
+    source_aggregate: AGG-ONLINE-157
+    sourceObjects:
+      - ref: test_demo
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(36)
+      - name: create_by
+        title: 创建人登录名称
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人登录名称
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: name
+        title: 用户名
+        type: varchar(200)
+      - name: sex
+        title: 性别
+        type: varchar(32)
+      - name: age
+        title: 年龄
+        type: int(32)
+      - name: descc
+        title: 描述
+        type: varchar(500)
+      - name: birthday
+        title: 生日
+        type: datetime
+      - name: user_code
+        title: 用户编码
+        type: varchar(32)
+      - name: file_kk
+        title: 附件
+        type: varchar(500)
+      - name: top_pic
+        title: 头像
+        type: varchar(500)
+      - name: chegnshi
+        title: 城市
+        type: varchar(300)
+      - name: ceck
+        title: checkbox
+        type: varchar(32)
+      - name: xiamuti
+        title: 下拉多选
+        type: varchar(100)
+      - name: search_sel
+        title: 搜索下拉
+        type: varchar(100)
+      - name: pop
+        title: 弹窗
+        type: varchar(32)
+      - name: sel_table
+        title: 下拉字典表
+        type: varchar(32)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/test/controller/JeecgOrderErpMainController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-DEMO-016
+    name: "/test/jeecgOrderMain 接口组"
+    description: "/test/jeecgOrderMain 接口组：以 在线表单示例数据 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: TestDemo_JeecgOrderMain
+    source_aggregate: AGG-ONLINE-157
+    sourceObjects:
+      - ref: test_demo
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(36)
+      - name: create_by
+        title: 创建人登录名称
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人登录名称
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: name
+        title: 用户名
+        type: varchar(200)
+      - name: sex
+        title: 性别
+        type: varchar(32)
+      - name: age
+        title: 年龄
+        type: int(32)
+      - name: descc
+        title: 描述
+        type: varchar(500)
+      - name: birthday
+        title: 生日
+        type: datetime
+      - name: user_code
+        title: 用户编码
+        type: varchar(32)
+      - name: file_kk
+        title: 附件
+        type: varchar(500)
+      - name: top_pic
+        title: 头像
+        type: varchar(500)
+      - name: chegnshi
+        title: 城市
+        type: varchar(300)
+      - name: ceck
+        title: checkbox
+        type: varchar(32)
+      - name: xiamuti
+        title: 下拉多选
+        type: varchar(100)
+      - name: search_sel
+        title: 搜索下拉
+        type: varchar(100)
+      - name: pop
+        title: 弹窗
+        type: varchar(32)
+      - name: sel_table
+        title: 下拉字典表
+        type: varchar(32)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/test/controller/JeecgOrderMainController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-DEMO-017
+    name: "/test/jeecgOrderMain 接口组（/test/jeecgOrderMain）"
+    description: "/test/jeecgOrderMain 接口组（/test/jeecgOrderMain）：以 在线表单示例数据 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: TestDemo_JeecgOrderMain2
+    source_aggregate: AGG-ONLINE-157
+    sourceObjects:
+      - ref: test_demo
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(36)
+      - name: create_by
+        title: 创建人登录名称
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人登录名称
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: name
+        title: 用户名
+        type: varchar(200)
+      - name: sex
+        title: 性别
+        type: varchar(32)
+      - name: age
+        title: 年龄
+        type: int(32)
+      - name: descc
+        title: 描述
+        type: varchar(500)
+      - name: birthday
+        title: 生日
+        type: datetime
+      - name: user_code
+        title: 用户编码
+        type: varchar(32)
+      - name: file_kk
+        title: 附件
+        type: varchar(500)
+      - name: top_pic
+        title: 头像
+        type: varchar(500)
+      - name: chegnshi
+        title: 城市
+        type: varchar(300)
+      - name: ceck
+        title: checkbox
+        type: varchar(32)
+      - name: xiamuti
+        title: 下拉多选
+        type: varchar(100)
+      - name: search_sel
+        title: 搜索下拉
+        type: varchar(100)
+      - name: pop
+        title: 弹窗
+        type: varchar(32)
+      - name: sel_table
+        title: 下拉字典表
+        type: varchar(32)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/test/controller/JeecgOrderMainController.java#JeecgOrderMainController#exportXls（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-DEMO-018
+    name: "/test/joaDemo 接口组"
+    description: "/test/joaDemo 接口组：以 在线表单示例数据 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: TestDemo_JoaDemo
+    source_aggregate: AGG-ONLINE-157
+    sourceObjects:
+      - ref: test_demo
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(36)
+      - name: create_by
+        title: 创建人登录名称
+        type: varchar(50)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人登录名称
+        type: varchar(50)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+      - name: name
+        title: 用户名
+        type: varchar(200)
+      - name: sex
+        title: 性别
+        type: varchar(32)
+      - name: age
+        title: 年龄
+        type: int(32)
+      - name: descc
+        title: 描述
+        type: varchar(500)
+      - name: birthday
+        title: 生日
+        type: datetime
+      - name: user_code
+        title: 用户编码
+        type: varchar(32)
+      - name: file_kk
+        title: 附件
+        type: varchar(500)
+      - name: top_pic
+        title: 头像
+        type: varchar(500)
+      - name: chegnshi
+        title: 城市
+        type: varchar(300)
+      - name: ceck
+        title: checkbox
+        type: varchar(32)
+      - name: xiamuti
+        title: 下拉多选
+        type: varchar(100)
+      - name: search_sel
+        title: 搜索下拉
+        type: varchar(100)
+      - name: pop
+        title: 弹窗
+        type: varchar(32)
+      - name: sel_table
+        title: 下拉字典表
+        type: varchar(32)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/test/controller/JoaDemoController.java#JoaDemoController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-OPENAPI-019
+    name: 接口管理（/sys/api）
+    description: "接口管理（/sys/api）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Api
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/api/controller/SystemApiController.java#SystemApiController#updateSysAnnounReadFlag（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-OPENAPI-020
+    name: 接口管理（/sys/api）
+    description: "接口管理（/sys/api）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Api2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/api/controller/SystemApiController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-MESSAGE-021
+    name: 系统消息管理
+    description: "系统消息管理：以 消息 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: Chat2biMessage_SysMessage
+    source_aggregate: AGG-AIRAG-017
+    sourceObjects:
+      - ref: chat2bi_message
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(32)
+      - name: conversation_id
+        title: 所属会话id
+        type: varchar(32)
+      - name: role
+        title: "角色 user/ai"
+        type: varchar(10)
+      - name: content
+        title: 文本内容（预览/检索用）
+        type: text
+      - name: msg_json
+        title: 完整消息对象JSON（含dsl/data/sql/chartType/insight等，无损还原）
+        type: mediumtext
+      - name: sort_no
+        title: 顺序号
+        type: int(11)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/controller/SysMessageController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-MESSAGE-022
+    name: 系统消息管理（/sys/message/sysMessage）
+    description: "系统消息管理（/sys/message/sysMessage）：以 消息 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: Chat2biMessage_SysMessage2
+    source_aggregate: AGG-AIRAG-017
+    sourceObjects:
+      - ref: chat2bi_message
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(32)
+      - name: conversation_id
+        title: 所属会话id
+        type: varchar(32)
+      - name: role
+        title: "角色 user/ai"
+        type: varchar(10)
+      - name: content
+        title: 文本内容（预览/检索用）
+        type: text
+      - name: msg_json
+        title: 完整消息对象JSON（含dsl/data/sql/chartType/insight等，无损还原）
+        type: mediumtext
+      - name: sort_no
+        title: 顺序号
+        type: int(11)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/controller/SysMessageController.java#SysMessageController#exportXls（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-MESSAGE-023
+    name: 系统消息模板管理
+    description: "系统消息模板管理：以 消息 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: Chat2biMessage_SysMessageTemplate
+    source_aggregate: AGG-AIRAG-017
+    sourceObjects:
+      - ref: chat2bi_message
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(32)
+      - name: conversation_id
+        title: 所属会话id
+        type: varchar(32)
+      - name: role
+        title: "角色 user/ai"
+        type: varchar(10)
+      - name: content
+        title: 文本内容（预览/检索用）
+        type: text
+      - name: msg_json
+        title: 完整消息对象JSON（含dsl/data/sql/chartType/insight等，无损还原）
+        type: mediumtext
+      - name: sort_no
+        title: 顺序号
+        type: int(11)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/controller/SysMessageTemplateController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-MESSAGE-024
+    name: 系统消息模板管理（/sys/message/sysMessageTemplate）
+    description: "系统消息模板管理（/sys/message/sysMessageTemplate）：以 消息 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: Chat2biMessage_SysMessageTemplate2
+    source_aggregate: AGG-AIRAG-017
+    sourceObjects:
+      - ref: chat2bi_message
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键
+        type: varchar(32)
+      - name: conversation_id
+        title: 所属会话id
+        type: varchar(32)
+      - name: role
+        title: "角色 user/ai"
+        type: varchar(10)
+      - name: content
+        title: 文本内容（预览/检索用）
+        type: text
+      - name: msg_json
+        title: 完整消息对象JSON（含dsl/data/sql/chartType/insight等，无损还原）
+        type: mediumtext
+      - name: sort_no
+        title: 顺序号
+        type: int(11)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/controller/SysMessageTemplateController.java#SysMessageTemplateController#exportXls（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-MONITOR-025
+    name: "/sys/actuator/redis 接口组（/sys/actuator/redis）"
+    description: "/sys/actuator/redis 接口组（/sys/actuator/redis）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Redis2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/monitor/controller/ActuatorRedisController.java#ActuatorRedisController#getKeysSize（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-OPENAPI-026
+    name: "/openapi/auth 接口组"
+    description: "/openapi/auth 接口组：以 打开接口 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: OpenApi_Auth
+    source_aggregate: AGG-OPENAPI-082
+    sourceObjects:
+      - ref: open_api
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: name
+        title: 接口名称
+        type: varchar(100)
+      - name: request_method
+        title: 请求方法
+        type: varchar(50)
+      - name: request_url
+        title: 接口地址
+        type: varchar(300)
+      - name: white_list
+        title: IP白名单，支持IP、CIDR、通配符，逗号或换行分隔
+        type: text
+      - name: remarks
+        title: 白名单备注说明
+        type: text
+      - name: description
+        title: 接口描述
+        type: varchar(255)
+      - name: request_body
+        title: 请求体内容
+        type: varchar(255)
+      - name: origin_url
+        title: 原始地址
+        type: varchar(255)
+      - name: status
+        title: 状态
+        type: int(10)
+      - name: del_flag
+        title: 删除标识
+        type: int(10)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 修改人
+        type: varchar(32)
+      - name: update_time
+        title: 修改时间
+        type: datetime
+      - name: headers_json
+        title: 请求头json
+        type: json
+      - name: params_json
+        title: 请求参数json
+        type: json
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/openapi/controller/OpenApiAuthController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-OPENAPI-027
+    name: "/openapi/auth 接口组（/openapi/auth）"
+    description: "/openapi/auth 接口组（/openapi/auth）：以 打开接口 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: OpenApi_Auth2
+    source_aggregate: AGG-OPENAPI-082
+    sourceObjects:
+      - ref: open_api
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: name
+        title: 接口名称
+        type: varchar(100)
+      - name: request_method
+        title: 请求方法
+        type: varchar(50)
+      - name: request_url
+        title: 接口地址
+        type: varchar(300)
+      - name: white_list
+        title: IP白名单，支持IP、CIDR、通配符，逗号或换行分隔
+        type: text
+      - name: remarks
+        title: 白名单备注说明
+        type: text
+      - name: description
+        title: 接口描述
+        type: varchar(255)
+      - name: request_body
+        title: 请求体内容
+        type: varchar(255)
+      - name: origin_url
+        title: 原始地址
+        type: varchar(255)
+      - name: status
+        title: 状态
+        type: int(10)
+      - name: del_flag
+        title: 删除标识
+        type: int(10)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 修改人
+        type: varchar(32)
+      - name: update_time
+        title: 修改时间
+        type: datetime
+      - name: headers_json
+        title: 请求头json
+        type: json
+      - name: params_json
+        title: 请求参数json
+        type: json
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/openapi/controller/OpenApiAuthController.java#OpenApiAuthController#genAKSK（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-OPENAPI-028
+    name: 开放接口管理
+    description: "开放接口管理：以 打开接口 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: OpenApi_Manage
+    source_aggregate: AGG-OPENAPI-082
+    sourceObjects:
+      - ref: open_api
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: name
+        title: 接口名称
+        type: varchar(100)
+      - name: request_method
+        title: 请求方法
+        type: varchar(50)
+      - name: request_url
+        title: 接口地址
+        type: varchar(300)
+      - name: white_list
+        title: IP白名单，支持IP、CIDR、通配符，逗号或换行分隔
+        type: text
+      - name: remarks
+        title: 白名单备注说明
+        type: text
+      - name: description
+        title: 接口描述
+        type: varchar(255)
+      - name: request_body
+        title: 请求体内容
+        type: varchar(255)
+      - name: origin_url
+        title: 原始地址
+        type: varchar(255)
+      - name: status
+        title: 状态
+        type: int(10)
+      - name: del_flag
+        title: 删除标识
+        type: int(10)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 修改人
+        type: varchar(32)
+      - name: update_time
+        title: 修改时间
+        type: datetime
+      - name: headers_json
+        title: 请求头json
+        type: json
+      - name: params_json
+        title: 请求参数json
+        type: json
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/openapi/controller/OpenApiController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-OPENAPI-029
+    name: 记录管理
+    description: "记录管理：以 打开接口 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: OpenApi_Record
+    source_aggregate: AGG-OPENAPI-082
+    sourceObjects:
+      - ref: open_api
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: name
+        title: 接口名称
+        type: varchar(100)
+      - name: request_method
+        title: 请求方法
+        type: varchar(50)
+      - name: request_url
+        title: 接口地址
+        type: varchar(300)
+      - name: white_list
+        title: IP白名单，支持IP、CIDR、通配符，逗号或换行分隔
+        type: text
+      - name: remarks
+        title: 白名单备注说明
+        type: text
+      - name: description
+        title: 接口描述
+        type: varchar(255)
+      - name: request_body
+        title: 请求体内容
+        type: varchar(255)
+      - name: origin_url
+        title: 原始地址
+        type: varchar(255)
+      - name: status
+        title: 状态
+        type: int(10)
+      - name: del_flag
+        title: 删除标识
+        type: int(10)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 修改人
+        type: varchar(32)
+      - name: update_time
+        title: 修改时间
+        type: datetime
+      - name: headers_json
+        title: 请求头json
+        type: json
+      - name: params_json
+        title: 请求参数json
+        type: json
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/openapi/controller/OpenApiLogController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-OSS-030
+    name: 文件管理
+    description: "文件管理：以 对象存储文件文件 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: OssFile_File
+    source_aggregate: AGG-OSS-086
+    sourceObjects:
+      - ref: oss_file
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键id
+        type: varchar(32)
+      - name: file_name
+        title: 文件名称
+        type: varchar(255)
+      - name: url
+        title: 文件地址
+        type: varchar(1000)
+      - name: create_by
+        title: 创建人登录名称
+        type: varchar(32)
+      - name: create_time
+        title: 创建日期
+        type: datetime
+      - name: update_by
+        title: 更新人登录名称
+        type: varchar(32)
+      - name: update_time
+        title: 更新日期
+        type: datetime
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/oss/controller/OssFileController.java#OssFileController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-QUARTZ-031
+    name: "/sys/quartzJob 接口组"
+    description: "/sys/quartzJob 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_QuartzJob
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/quartz/controller/QuartzJobController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-QUARTZ-032
+    name: "/sys/quartzJob 接口组（/sys/quartzJob）"
+    description: "/sys/quartzJob 接口组（/sys/quartzJob）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_QuartzJob2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/quartz/controller/QuartzJobController.java#QuartzJobController#pauseJob（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-MESSAGE-033
+    name: "/sys/annountCement 接口组"
+    description: "/sys/annountCement 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_AnnountCement
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysAnnouncementController.java#SysAnnouncementController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-MESSAGE-034
+    name: "/sys/sysAnnouncementSend 接口组"
+    description: "/sys/sysAnnouncementSend 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_SysAnnouncementSend
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysAnnouncementSendController.java#SysAnnouncementSendController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-035
+    name: 分类管理
+    description: "分类管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Category
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysCategoryController.java#SysCategoryController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-036
+    name: "/sys/checkRule 接口组"
+    description: "/sys/checkRule 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_CheckRule
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysCheckRuleController.java#SysCheckRuleController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-037
+    name: 备注管理
+    description: "备注管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Comment
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysCommentController.java#SysCommentController#queryListByForm（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-038
+    name: 数据日志管理
+    description: "数据日志管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_DataLog
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDataLogController.java#SysDataLogController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-039
+    name: 数据来源管理
+    description: "数据来源管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_DataSource
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDataSourceController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-040
+    name: 数据来源管理（/sys/dataSource）
+    description: "数据来源管理（/sys/dataSource）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_DataSource2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDataSourceController.java#SysDataSourceController#exportXls（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-041
+    name: "/sys/sysDepart 接口组"
+    description: "/sys/sysDepart 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_SysDepart
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDepartController.java#SysDepartController#queryMyDeptTreeList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-042
+    name: "/sys/sysDepartPermission 接口组"
+    description: "/sys/sysDepartPermission 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_SysDepartPermission
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDepartPermissionController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-043
+    name: "/sys/sysDepartPermission 接口组（/sys/sysDepartPermission）"
+    description: "/sys/sysDepartPermission 接口组（/sys/sysDepartPermission）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_SysDepartPermission2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDepartPermissionController.java#SysDepartPermissionController#exportXls（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-044
+    name: "/sys/sysDepartRole 接口组"
+    description: "/sys/sysDepartRole 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_SysDepartRole
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDepartRoleController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-045
+    name: "/sys/sysDepartRole 接口组（/sys/sysDepartRole）"
+    description: "/sys/sysDepartRole 接口组（/sys/sysDepartRole）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_SysDepartRole2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDepartRoleController.java#SysDepartRoleController#getDeptRoleList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-046
+    name: 字典管理
+    description: "字典管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Dict
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDictController.java#SysDictController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-047
+    name: 字典明细管理
+    description: "字典明细管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_DictItem
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysDictItemController.java#SysDictItemController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-048
+    name: "/sys/fillRule 接口组"
+    description: "/sys/fillRule 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_FillRule
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysFillRuleController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-049
+    name: "/sys/fillRule 接口组（/sys/fillRule）"
+    description: "/sys/fillRule 接口组（/sys/fillRule）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_FillRule2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysFillRuleController.java#SysFillRuleController#testFillRule（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-050
+    name: 表单文件管理
+    description: "表单文件管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_FormFile
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysFormFileController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-051
+    name: 表单文件管理（/sys/formFile）
+    description: "表单文件管理（/sys/formFile）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_FormFile2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysFormFileController.java#SysFormFileController#exportXls（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-052
+    name: "/sys/gatewayRoute 接口组"
+    description: "/sys/gatewayRoute 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_GatewayRoute
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysGatewayRouteController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-053
+    name: "/sys/gatewayRoute 接口组（/sys/gatewayRoute）"
+    description: "/sys/gatewayRoute 接口组（/sys/gatewayRoute）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_GatewayRoute2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysGatewayRouteController.java#SysGatewayRouteController#deleteList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-054
+    name: 日志管理
+    description: "日志管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Log
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysLogController.java#SysLogController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-055
+    name: 权限管理
+    description: "权限管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Permission
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysPermissionController.java#SysPermissionController#list（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-056
+    name: 位置管理
+    description: "位置管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Position
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysPositionController.java#SysPositionController#queryPageList（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-057
+    name: 角色管理
+    description: "角色管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_Role
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysRoleController.java#SysRoleController#list（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-058
+    name: 系统角色索引管理
+    description: "系统角色索引管理：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_SysRoleIndex
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysRoleIndexController.java#（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-059
+    name: 系统角色索引管理（/sys/sysRoleIndex）
+    description: "系统角色索引管理（/sys/sysRoleIndex）：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_SysRoleIndex2
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysRoleIndexController.java#SysRoleIndexController#exportXls（tier=L1）
+    # evidence: INFERRED
+  - id: RPT-SYSTEM-060
+    name: "/sys/tableWhiteList 接口组"
+    description: "/sys/tableWhiteList 接口组：以 公告 为主表的列表/查询视图。"
+    description_source: structure_derived
+    objectType: LIST_QUERY
+    behaviorRef: SysAnnouncement_TableWhiteList
+    source_aggregate: AGG-MESSAGE-109
+    sourceObjects:
+      - ref: sys_announcement
+        role: primary
+        primary: true
+    joins: []
+    parameters: []
+    conditions: []
+    columns:
+      - name: id
+        title: 主键ID
+        type: varchar(32)
+      - name: titile
+        title: 标题
+        type: varchar(100)
+      - name: msg_content
+        title: 内容
+        type: text
+      - name: start_time
+        title: 开始时间
+        type: datetime
+      - name: end_time
+        title: 结束时间
+        type: datetime
+      - name: sender
+        title: 发布人
+        type: varchar(100)
+      - name: priority
+        title: 优先级（L低，M中，H高）
+        type: varchar(255)
+      - name: msg_category
+        title: 消息类型1:通知公告2:系统消息
+        type: varchar(10)
+      - name: msg_type
+        title: 通告对象类型（USER:指定用户，ALL:全体用户）
+        type: varchar(10)
+      - name: send_status
+        title: 发布状态（0未发布，1已发布，2已撤销）
+        type: varchar(10)
+      - name: send_time
+        title: 发布时间
+        type: datetime
+      - name: cancel_time
+        title: 撤销时间
+        type: datetime
+      - name: del_flag
+        title: 删除状态（0，正常，1已删除）
+        type: varchar(1)
+      - name: bus_type
+        title: "业务类型(email:邮件 bpm:流程 tenant_invite:租户邀请)"
+        type: varchar(20)
+      - name: bus_id
+        title: 业务id
+        type: varchar(50)
+      - name: open_type
+        title: "打开方式(组件：component 路由：url)"
+        type: varchar(20)
+      - name: open_page
+        title: "组件/路由 地址"
+        type: varchar(255)
+      - name: create_by
+        title: 创建人
+        type: varchar(32)
+      - name: create_time
+        title: 创建时间
+        type: datetime
+      - name: update_by
+        title: 更新人
+        type: varchar(32)
+      - name: update_time
+        title: 更新时间
+        type: datetime
+      - name: user_ids
+        title: 指定用户
+        type: text
+      - name: msg_abstract
+        title: 摘要/扩展业务参数
+        type: text
+      - name: dt_task_id
+        title: 钉钉task_id，用于撤回消息
+        type: varchar(100)
+      - name: tenant_id
+        title: 租户ID
+        type: int(10)
+      - name: files
+        title: 附件
+        type: text
+      - name: visits_num
+        title: 访问次数
+        type: int(11)
+      - name: iz_top
+        title: "是否置顶（0:否;  1:是）"
+        type: int(10)
+      - name: iz_approval
+        title: "是否审批（0否 1是）"
+        type: varchar(10)
+      - name: bpm_status
+        title: 流程状态
+        type: varchar(10)
+      - name: msg_classify
+        title: 消息归类
+        type: varchar(255)
+      - name: notice_type
+        title: 通知类型(system:系统消息、file:知识库、flow:流程、plan:日程计划、meeting:会议)
+        type: varchar(10)
+    preAggregation: null
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysTableWhiteListController.java#（tier=L1）
+    # evidence: INFERRED

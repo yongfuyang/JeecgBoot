@@ -1,0 +1,3070 @@
+# PREVIEW — pending human confirmation
+model_type: ACTOR
+version: "6.0"
+domain: jeecg
+description: "jeecg-aio 逆向 M5 主体模型（角色 / 权限 / 数据范围）"
+
+actors:
+  - actorId: ACTOR-HUMAN
+    actorType: HUMAN
+    name: 系统用户
+    description: "经 sys_user 登录后访问系统的自然人用户（含管理员与普通用户）。"
+    description_source: doc_name
+    roles: "['ROLE-DBADEVELOPER', 'ROLE-LOWDEVELOPER', 'ROLE-VUE3', 'ROLE-ZUHUADMIN', 'ROLE-AIADMIN', 'ROLE-CHAT2BI', 'ROLE-TEST', 'ROLE-ADMIN']"
+    attributes: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_user（种子数据解析，tier=L1）
+    # evidence: FACT
+  - actorId: ACTOR-SYSTEM
+    actorType: SYSTEM
+    name: 系统调度
+    description: 定时任务与消息消费者，无人工触发。
+    description_source: structure_derived
+    roles: []
+    attributes: []
+    # evidence: INFERRED
+
+roles:
+  - roleId: ROLE-DBADEVELOPER
+    name: 数据开发角色
+    code: dbadeveloper
+    description: "数据开发角色：由 sys_role 种子数据定义的系统角色。"
+    description_source: doc_name
+    inheritsFrom: []
+    permissions: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_role.dbadeveloper（种子数据解析，tier=L1）
+    # evidence: FACT
+  - roleId: ROLE-LOWDEVELOPER
+    name: 低代码开发角色
+    code: lowdeveloper
+    description: "低代码开发角色：由 sys_role 种子数据定义的系统角色。"
+    description_source: doc_name
+    inheritsFrom: []
+    permissions: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_role.lowdeveloper（种子数据解析，tier=L1）
+    # evidence: FACT
+  - roleId: ROLE-VUE3
+    name: Vue3全角色
+    code: vue3
+    description: "Vue3全角色：由 sys_role 种子数据定义的系统角色。"
+    description_source: doc_name
+    inheritsFrom: []
+    permissions: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_role.vue3（种子数据解析，tier=L1）
+    # evidence: FACT
+  - roleId: ROLE-ZUHUADMIN
+    name: 租户管理员
+    code: zuhuadmin
+    description: "租户管理员：由 sys_role 种子数据定义的系统角色。"
+    description_source: doc_name
+    inheritsFrom: []
+    permissions: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_role.zuhuadmin（种子数据解析，tier=L1）
+    # evidence: FACT
+  - roleId: ROLE-AIADMIN
+    name: AI应用角色
+    code: aiadmin
+    description: "AI应用角色：由 sys_role 种子数据定义的系统角色。"
+    description_source: doc_name
+    inheritsFrom: []
+    permissions: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_role.aiadmin（种子数据解析，tier=L1）
+    # evidence: FACT
+  - roleId: ROLE-CHAT2BI
+    name: Chat2BI
+    code: chat2bi
+    description: "Chat2BI：由 sys_role 种子数据定义的系统角色。"
+    description_source: doc_name
+    inheritsFrom: []
+    permissions: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_role.chat2bi（种子数据解析，tier=L1）
+    # evidence: FACT
+  - roleId: ROLE-TEST
+    name: 系统用户标配角色
+    code: test
+    description: "系统用户标配角色：由 sys_role 种子数据定义的系统角色。"
+    description_source: doc_name
+    inheritsFrom: []
+    permissions: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_role.test（种子数据解析，tier=L1）
+    # evidence: FACT
+  - roleId: ROLE-ADMIN
+    name: 管理员
+    code: admin
+    description: "管理员：由 sys_role 种子数据定义的系统角色。"
+    description_source: doc_name
+    inheritsFrom: []
+    permissions: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_role.admin（种子数据解析，tier=L1）
+    # evidence: FACT
+
+permissions:
+  - permissionId: PERM-AIRAG-APP-DELETE
+    name: "airag:app:delete 权限"
+    code: airag:app:delete
+    description: "airag:app:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-APP-EDIT
+    name: "airag:app:edit 权限"
+    code: airag:app:edit
+    description: "airag:app:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-APP-LIST
+    name: "airag:app:list 权限"
+    code: airag:app:list
+    description: "airag:app:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-FLOW-ADD
+    name: "airag:flow:add 权限"
+    code: airag:flow:add
+    description: "airag:flow:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-FLOW-COPY
+    name: "airag:flow:copy 权限"
+    code: airag:flow:copy
+    description: "airag:flow:copy：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-FLOW-DEBUG
+    name: "airag:flow:debug 权限"
+    code: airag:flow:debug
+    description: "airag:flow:debug：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-FLOW-DELETE
+    name: "airag:flow:delete 权限"
+    code: airag:flow:delete
+    description: "airag:flow:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-FLOW-DESIGNSAVE
+    name: "airag:flow:designSave 权限"
+    code: airag:flow:designSave
+    description: "airag:flow:designSave：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-FLOW-EDIT
+    name: "airag:flow:edit 权限"
+    code: airag:flow:edit
+    description: "airag:flow:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-ADD
+    name: "airag:knowledge:add 权限"
+    code: airag:knowledge:add
+    description: "airag:knowledge:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-DELETE
+    name: "airag:knowledge:delete 权限"
+    code: airag:knowledge:delete
+    description: "airag:knowledge:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-DOC-DELETEALL
+    name: "airag:knowledge:doc:deleteAll 权限"
+    code: airag:knowledge:doc:deleteAll
+    description: "airag:knowledge:doc:deleteAll：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-DOC-DELETEBATCH
+    name: "airag:knowledge:doc:deleteBatch 权限"
+    code: airag:knowledge:doc:deleteBatch
+    description: "airag:knowledge:doc:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-DOC-EDIT
+    name: "airag:knowledge:doc:edit 权限"
+    code: airag:knowledge:doc:edit
+    description: "airag:knowledge:doc:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-DOC-LIST
+    name: "airag:knowledge:doc:list 权限"
+    code: airag:knowledge:doc:list
+    description: "airag:knowledge:doc:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-DOC-REBUILD
+    name: "airag:knowledge:doc:rebuild 权限"
+    code: airag:knowledge:doc:rebuild
+    description: "airag:knowledge:doc:rebuild：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-DOC-ZIP
+    name: "airag:knowledge:doc:zip 权限"
+    code: airag:knowledge:doc:zip
+    description: "airag:knowledge:doc:zip：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-EDIT
+    name: "airag:knowledge:edit 权限"
+    code: airag:knowledge:edit
+    description: "airag:knowledge:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-LIST
+    name: "airag:knowledge:list 权限"
+    code: airag:knowledge:list
+    description: "airag:knowledge:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-KNOWLEDGE-REBUILD
+    name: "airag:knowledge:rebuild 权限"
+    code: airag:knowledge:rebuild
+    description: "airag:knowledge:rebuild：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MCP-DELETE
+    name: "airag:mcp:delete 权限"
+    code: airag:mcp:delete
+    description: "airag:mcp:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MCP-EXPORT
+    name: "airag:mcp:export 权限"
+    code: airag:mcp:export
+    description: "airag:mcp:export：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MCP-IMPORT
+    name: "airag:mcp:import 权限"
+    code: airag:mcp:import
+    description: "airag:mcp:import：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MCP-LIST
+    name: "airag:mcp:list 权限"
+    code: airag:mcp:list
+    description: "airag:mcp:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MCP-QUERYBYID
+    name: "airag:mcp:queryById 权限"
+    code: airag:mcp:queryById
+    description: "airag:mcp:queryById：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MCP-SAVE
+    name: "airag:mcp:save 权限"
+    code: airag:mcp:save
+    description: "airag:mcp:save：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MODEL-ADD
+    name: "airag:model:add 权限"
+    code: airag:model:add
+    description: "airag:model:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MODEL-DELETE
+    name: "airag:model:delete 权限"
+    code: airag:model:delete
+    description: "airag:model:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MODEL-EDIT
+    name: "airag:model:edit 权限"
+    code: airag:model:edit
+    description: "airag:model:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MODEL-EXPORTXLS
+    name: "airag:model:exportXls 权限"
+    code: airag:model:exportXls
+    description: "airag:model:exportXls：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MODEL-IMPORTEXCEL
+    name: "airag:model:importExcel 权限"
+    code: airag:model:importExcel
+    description: "airag:model:importExcel：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MODEL-LIST
+    name: "airag:model:list 权限"
+    code: airag:model:list
+    description: "airag:model:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MODEL-QUERYBYID
+    name: "airag:model:queryById 权限"
+    code: airag:model:queryById
+    description: "airag:model:queryById：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-AIRAG-MODEL-TEST
+    name: "airag:model:test 权限"
+    code: airag:model:test
+    description: "airag:model:test：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-APP-EDIT-VERSION
+    name: "app:edit:version 权限"
+    code: app:edit:version
+    description: "app:edit:version：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-BTN-ADD
+    name: "btn:add 权限"
+    code: btn:add
+    description: "btn:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DEMO-DBARRAY
+    name: "demo.dbarray 权限"
+    code: demo.dbarray
+    description: "demo.dbarray：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-ANALYSIS-SQL
+    name: "drag:analysis:sql 权限"
+    code: drag:analysis:sql
+    description: "drag:analysis:sql：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-DATASET-DELETE
+    name: "drag:dataset:delete 权限"
+    code: drag:dataset:delete
+    description: "drag:dataset:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-DATASET-SAVE
+    name: "drag:dataset:save 权限"
+    code: drag:dataset:save
+    description: "drag:dataset:save：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-DATASOURCE-DELETE
+    name: "drag:datasource:delete 权限"
+    code: drag:datasource:delete
+    description: "drag:datasource:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-DATASOURCE-DELETEBATCH
+    name: "drag:datasource:deleteBatch 权限"
+    code: drag:datasource:deleteBatch
+    description: "drag:datasource:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-DATASOURCE-QUERYBYID
+    name: "drag:datasource:queryById 权限"
+    code: drag:datasource:queryById
+    description: "drag:datasource:queryById：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-DATASOURCE-SAVEORUPATE
+    name: "drag:datasource:saveOrUpate 权限"
+    code: drag:datasource:saveOrUpate
+    description: "drag:datasource:saveOrUpate：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-DATASOURCE-TESTCONNECTION
+    name: "drag:datasource:testConnection 权限"
+    code: drag:datasource:testConnection
+    description: "drag:datasource:testConnection：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-DESIGN-GETTOTALDATA
+    name: "drag:design:getTotalData 权限"
+    code: drag:design:getTotalData
+    description: "drag:design:getTotalData：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-ICONLIB-CONFIG
+    name: "drag:iconlib:config 权限"
+    code: drag:iconlib:config
+    description: "drag:iconlib:config：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-MAP-CONFIG
+    name: "drag:map:config 权限"
+    code: drag:map:config
+    description: "drag:map:config：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-DRAG-TEMPLATE-EDIT
+    name: "drag:template:edit 权限"
+    code: drag:template:edit
+    description: "drag:template:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-CATEGORY-ADD
+    name: "jmreport:category:add 权限"
+    code: jmreport:category:add
+    description: "jmreport:category:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-CATEGORY-BATCHMOVE
+    name: "jmreport:category:batchMove 权限"
+    code: jmreport:category:batchMove
+    description: "jmreport:category:batchMove：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-CATEGORY-COMPLETELYDELETE
+    name: "jmreport:category:completelyDelete 权限"
+    code: jmreport:category:completelyDelete
+    description: "jmreport:category:completelyDelete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-CATEGORY-DELETE
+    name: "jmreport:category:delete 权限"
+    code: jmreport:category:delete
+    description: "jmreport:category:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-CATEGORY-EDIT
+    name: "jmreport:category:edit 权限"
+    code: jmreport:category:edit
+    description: "jmreport:category:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-CATEGORY-FOLDERSORT
+    name: "jmreport:category:folderSort 权限"
+    code: jmreport:category:folderSort
+    description: "jmreport:category:folderSort：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-CATEGORY-REDUCTION
+    name: "jmreport:category:reduction 权限"
+    code: jmreport:category:reduction
+    description: "jmreport:category:reduction：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-DESIGN-LOADTABLEDATA
+    name: "jmreport:design:loadTableData 权限"
+    code: jmreport:design:loadTableData
+    description: "jmreport:design:loadTableData：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-EXPORTJOB-DELETE
+    name: "jmreport:exportJob:delete 权限"
+    code: jmreport:exportJob:delete
+    description: "jmreport:exportJob:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-EXPORTJOB-DETAIL
+    name: "jmreport:exportJob:detail 权限"
+    code: jmreport:exportJob:detail
+    description: "jmreport:exportJob:detail：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-EXPORTJOB-LIST
+    name: "jmreport:exportJob:list 权限"
+    code: jmreport:exportJob:list
+    description: "jmreport:exportJob:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-EXPORTJOB-PLUGIN
+    name: "jmreport:exportJob:plugin 权限"
+    code: jmreport:exportJob:plugin
+    description: "jmreport:exportJob:plugin：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-EXPORTJOB-RUN
+    name: "jmreport:exportJob:run 权限"
+    code: jmreport:exportJob:run
+    description: "jmreport:exportJob:run：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-EXPORTJOB-SAVE
+    name: "jmreport:exportJob:save 权限"
+    code: jmreport:exportJob:save
+    description: "jmreport:exportJob:save：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-EXPORTJOB-STATUS
+    name: "jmreport:exportJob:status 权限"
+    code: jmreport:exportJob:status
+    description: "jmreport:exportJob:status：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-MAP-ADD
+    name: "jmreport:map:add 权限"
+    code: jmreport:map:add
+    description: "jmreport:map:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-MAP-DELETE
+    name: "jmreport:map:delete 权限"
+    code: jmreport:map:delete
+    description: "jmreport:map:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-REPORTGROUP-DELETE
+    name: "jmreport:reportGroup:delete 权限"
+    code: jmreport:reportGroup:delete
+    description: "jmreport:reportGroup:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-REPORTGROUP-DETAIL
+    name: "jmreport:reportGroup:detail 权限"
+    code: jmreport:reportGroup:detail
+    description: "jmreport:reportGroup:detail：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-REPORTGROUP-LIST
+    name: "jmreport:reportGroup:list 权限"
+    code: jmreport:reportGroup:list
+    description: "jmreport:reportGroup:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-JMREPORT-REPORTGROUP-SAVE
+    name: "jmreport:reportGroup:save 权限"
+    code: jmreport:reportGroup:save
+    description: "jmreport:reportGroup:save：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONL-DRAG-CLEAR-RECOVERY
+    name: "onl:drag:clear:recovery 权限"
+    code: onl:drag:clear:recovery
+    description: "onl:drag:clear:recovery：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONL-DRAG-GETRAWTABLEDATA
+    name: "onl:drag:getRawTableData 权限"
+    code: onl:drag:getRawTableData
+    description: "onl:drag:getRawTableData：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONL-DRAG-PAGE-DELETE
+    name: "onl:drag:page:delete 权限"
+    code: onl:drag:page:delete
+    description: "onl:drag:page:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-CODEGENERATE-PROJECTPATH
+    name: "online:codeGenerate:projectPath 权限"
+    code: online:codeGenerate:projectPath
+    description: "online:codeGenerate:projectPath：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-ADD
+    name: "online:form:add 权限"
+    code: online:form:add
+    description: "online:form:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-DELETE
+    name: "online:form:delete 权限"
+    code: online:form:delete
+    description: "online:form:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-DELETEBATCH
+    name: "online:form:deleteBatch 权限"
+    code: online:form:deleteBatch
+    description: "online:form:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-EDIT
+    name: "online:form:edit 权限"
+    code: online:form:edit
+    description: "online:form:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-ENHANCEJAVA-EDIT
+    name: "online:form:enhanceJava:edit 权限"
+    code: online:form:enhanceJava:edit
+    description: "online:form:enhanceJava:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-ENHANCEJAVA-SAVE
+    name: "online:form:enhanceJava:save 权限"
+    code: online:form:enhanceJava:save
+    description: "online:form:enhanceJava:save：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-ENHANCESQL-BATCHDELETE
+    name: "online:form:enhanceSql:batchDelete 权限"
+    code: online:form:enhanceSql:batchDelete
+    description: "online:form:enhanceSql:batchDelete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-ENHANCESQL-DELETE
+    name: "online:form:enhanceSql:delete 权限"
+    code: online:form:enhanceSql:delete
+    description: "online:form:enhanceSql:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-ENHANCESQL-EDIT
+    name: "online:form:enhanceSql:edit 权限"
+    code: online:form:enhanceSql:edit
+    description: "online:form:enhanceSql:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-ENHANCESQL-SAVE
+    name: "online:form:enhanceSql:save 权限"
+    code: online:form:enhanceSql:save
+    description: "online:form:enhanceSql:save：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-GENERATECODE
+    name: "online:form:generateCode 权限"
+    code: online:form:generateCode
+    description: "online:form:generateCode：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-IMPORTTABLE
+    name: "online:form:importTable 权限"
+    code: online:form:importTable
+    description: "online:form:importTable：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-QUERYTABLES
+    name: "online:form:queryTables 权限"
+    code: online:form:queryTables
+    description: "online:form:queryTables：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-REMOVE
+    name: "online:form:remove 权限"
+    code: online:form:remove
+    description: "online:form:remove：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-FORM-SYNCDB
+    name: "online:form:syncDb 权限"
+    code: online:form:syncDb
+    description: "online:form:syncDb：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-GRAPHREPORT-ADD
+    name: "online:graphreport:add 权限"
+    code: online:graphreport:add
+    description: "online:graphreport:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-GRAPHREPORT-DELETE
+    name: "online:graphreport:delete 权限"
+    code: online:graphreport:delete
+    description: "online:graphreport:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-GRAPHREPORT-DELETEBATCH
+    name: "online:graphreport:deleteBatch 权限"
+    code: online:graphreport:deleteBatch
+    description: "online:graphreport:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-GRAPHREPORT-EDIT
+    name: "online:graphreport:edit 权限"
+    code: online:graphreport:edit
+    description: "online:graphreport:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-GRAPHREPORT-PARSEFIELD
+    name: "online:graphreport:parseField 权限"
+    code: online:graphreport:parseField
+    description: "online:graphreport:parseField：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-REPORT-ADD
+    name: "online:report:add 权限"
+    code: online:report:add
+    description: "online:report:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-REPORT-DELETE
+    name: "online:report:delete 权限"
+    code: online:report:delete
+    description: "online:report:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-REPORT-DELETEBATCH
+    name: "online:report:deleteBatch 权限"
+    code: online:report:deleteBatch
+    description: "online:report:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-REPORT-EDIT
+    name: "online:report:edit 权限"
+    code: online:report:edit
+    description: "online:report:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-REPORT-GETDICTLIST
+    name: "online:report:getDictList 权限"
+    code: online:report:getDictList
+    description: "online:report:getDictList：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-REPORT-PARSESQL
+    name: "online:report:parseSql 权限"
+    code: online:report:parseSql
+    description: "online:report:parseSql：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-ONLINE-REPORT-TESTCONNECTION
+    name: "online:report:testConnection 权限"
+    code: online:report:testConnection
+    description: "online:report:testConnection：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API-ADD
+    name: "openapi:open_api:add 权限"
+    code: openapi:open_api:add
+    description: "openapi:open_api:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API-DELETE
+    name: "openapi:open_api:delete 权限"
+    code: openapi:open_api:delete
+    description: "openapi:open_api:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API-DELETEBATCH
+    name: "openapi:open_api:deleteBatch 权限"
+    code: openapi:open_api:deleteBatch
+    description: "openapi:open_api:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API-EDIT
+    name: "openapi:open_api:edit 权限"
+    code: openapi:open_api:edit
+    description: "openapi:open_api:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API-EXPORTXLS
+    name: "openapi:open_api:exportXls 权限"
+    code: openapi:open_api:exportXls
+    description: "openapi:open_api:exportXls：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API-IMPORTEXCEL
+    name: "openapi:open_api:importExcel 权限"
+    code: openapi:open_api:importExcel
+    description: "openapi:open_api:importExcel：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_AUTH-ADD
+    name: "openapi:open_api_auth:add 权限"
+    code: openapi:open_api_auth:add
+    description: "openapi:open_api_auth:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_AUTH-DELETE
+    name: "openapi:open_api_auth:delete 权限"
+    code: openapi:open_api_auth:delete
+    description: "openapi:open_api_auth:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_AUTH-DELETEBATCH
+    name: "openapi:open_api_auth:deleteBatch 权限"
+    code: openapi:open_api_auth:deleteBatch
+    description: "openapi:open_api_auth:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_AUTH-EDIT
+    name: "openapi:open_api_auth:edit 权限"
+    code: openapi:open_api_auth:edit
+    description: "openapi:open_api_auth:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_AUTH-GENAKSK
+    name: "openapi:open_api_auth:genAKSK 权限"
+    code: openapi:open_api_auth:genAKSK
+    description: "openapi:open_api_auth:genAKSK：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_AUTH-LIST
+    name: "openapi:open_api_auth:list 权限"
+    code: openapi:open_api_auth:list
+    description: "openapi:open_api_auth:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_AUTH-QUERYBYID
+    name: "openapi:open_api_auth:queryById 权限"
+    code: openapi:open_api_auth:queryById
+    description: "openapi:open_api_auth:queryById：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_LOG-ADD
+    name: "openapi:open_api_log:add 权限"
+    code: openapi:open_api_log:add
+    description: "openapi:open_api_log:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_LOG-DELETE
+    name: "openapi:open_api_log:delete 权限"
+    code: openapi:open_api_log:delete
+    description: "openapi:open_api_log:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_LOG-DELETEBATCH
+    name: "openapi:open_api_log:deleteBatch 权限"
+    code: openapi:open_api_log:deleteBatch
+    description: "openapi:open_api_log:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_LOG-EDIT
+    name: "openapi:open_api_log:edit 权限"
+    code: openapi:open_api_log:edit
+    description: "openapi:open_api_log:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_LOG-LIST
+    name: "openapi:open_api_log:list 权限"
+    code: openapi:open_api_log:list
+    description: "openapi:open_api_log:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_LOG-QUERYBYID
+    name: "openapi:open_api_log:queryById 权限"
+    code: openapi:open_api_log:queryById
+    description: "openapi:open_api_log:queryById：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_PERMISSION-ADD
+    name: "openapi:open_api_permission:add 权限"
+    code: openapi:open_api_permission:add
+    description: "openapi:open_api_permission:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-OPENAPI-OPEN_API_PERMISSION-GETOPENAPI
+    name: "openapi:open_api_permission:getOpenApi 权限"
+    code: openapi:open_api_permission:getOpenApi
+    description: "openapi:open_api_permission:getOpenApi：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-CHECKRULE-ADD
+    name: "system:checkRule:add 权限"
+    code: system:checkRule:add
+    description: "system:checkRule:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-CHECKRULE-DELETE
+    name: "system:checkRule:delete 权限"
+    code: system:checkRule:delete
+    description: "system:checkRule:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-CHECKRULE-DELETEBATCH
+    name: "system:checkRule:deleteBatch 权限"
+    code: system:checkRule:deleteBatch
+    description: "system:checkRule:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-CHECKRULE-EDIT
+    name: "system:checkRule:edit 权限"
+    code: system:checkRule:edit
+    description: "system:checkRule:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DATASOURCE-ADD
+    name: "system:datasource:add 权限"
+    code: system:datasource:add
+    description: "system:datasource:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DATASOURCE-DELETE
+    name: "system:datasource:delete 权限"
+    code: system:datasource:delete
+    description: "system:datasource:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DATASOURCE-EDIT
+    name: "system:datasource:edit 权限"
+    code: system:datasource:edit
+    description: "system:datasource:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DATASOURCE-EXPORT
+    name: "system:datasource:export 权限"
+    code: system:datasource:export
+    description: "system:datasource:export：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DATASOURCE-IMPORT
+    name: "system:datasource:import 权限"
+    code: system:datasource:import
+    description: "system:datasource:import：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DATASOURCE-LIST
+    name: "system:datasource:list 权限"
+    code: system:datasource:list
+    description: "system:datasource:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-ADD
+    name: "system:depart:add 权限"
+    code: system:depart:add
+    description: "system:depart:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-DELETE
+    name: "system:depart:delete 权限"
+    code: system:depart:delete
+    description: "system:depart:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-DELETEBATCH
+    name: "system:depart:deleteBatch 权限"
+    code: system:depart:deleteBatch
+    description: "system:depart:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-EDIT
+    name: "system:depart:edit 权限"
+    code: system:depart:edit
+    description: "system:depart:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-IMPORTEXCEL
+    name: "system:depart:importExcel 权限"
+    code: system:depart:importExcel
+    description: "system:depart:importExcel：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-ROLE-ADD
+    name: "system:depart:role:add 权限"
+    code: system:depart:role:add
+    description: "system:depart:role:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-ROLE-DELETE
+    name: "system:depart:role:delete 权限"
+    code: system:depart:role:delete
+    description: "system:depart:role:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-ROLE-DELETEBATCH
+    name: "system:depart:role:deleteBatch 权限"
+    code: system:depart:role:deleteBatch
+    description: "system:depart:role:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-ROLE-EDIT
+    name: "system:depart:role:edit 权限"
+    code: system:depart:role:edit
+    description: "system:depart:role:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-ROLE-USERADD
+    name: "system:depart:role:userAdd 权限"
+    code: system:depart:role:userAdd
+    description: "system:depart:role:userAdd：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DEPART-UPDATECHANGE
+    name: "system:depart:updateChange 权限"
+    code: system:depart:updateChange
+    description: "system:depart:updateChange：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-ADD
+    name: "system:dict:add 权限"
+    code: system:dict:add
+    description: "system:dict:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-DELETE
+    name: "system:dict:delete 权限"
+    code: system:dict:delete
+    description: "system:dict:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-DELETEBATCH
+    name: "system:dict:deleteBatch 权限"
+    code: system:dict:deleteBatch
+    description: "system:dict:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-DELETERECYCLEBIN
+    name: "system:dict:deleteRecycleBin 权限"
+    code: system:dict:deleteRecycleBin
+    description: "system:dict:deleteRecycleBin：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-EDIT
+    name: "system:dict:edit 权限"
+    code: system:dict:edit
+    description: "system:dict:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-IMPORTEXCEL
+    name: "system:dict:importExcel 权限"
+    code: system:dict:importExcel
+    description: "system:dict:importExcel：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-ITEM-ADD
+    name: "system:dict:item:add 权限"
+    code: system:dict:item:add
+    description: "system:dict:item:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-ITEM-DELETE
+    name: "system:dict:item:delete 权限"
+    code: system:dict:item:delete
+    description: "system:dict:item:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-ITEM-DELETEBATCH
+    name: "system:dict:item:deleteBatch 权限"
+    code: system:dict:item:deleteBatch
+    description: "system:dict:item:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-ITEM-EDIT
+    name: "system:dict:item:edit 权限"
+    code: system:dict:item:edit
+    description: "system:dict:item:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-DICT-PUTRECYCLEBIN
+    name: "system:dict:putRecycleBin 权限"
+    code: system:dict:putRecycleBin
+    description: "system:dict:putRecycleBin：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-GATEWAY-COPYROUTE
+    name: "system:gateway:copyRoute 权限"
+    code: system:gateway:copyRoute
+    description: "system:gateway:copyRoute：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-GATEWAY-DELETERECYCLEBIN
+    name: "system:gateway:deleteRecycleBin 权限"
+    code: system:gateway:deleteRecycleBin
+    description: "system:gateway:deleteRecycleBin：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-GATEWAY-PUTRECYCLEBIN
+    name: "system:gateway:putRecycleBin 权限"
+    code: system:gateway:putRecycleBin
+    description: "system:gateway:putRecycleBin：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-GATEWAY-UPDATEALL
+    name: "system:gateway:updateAll 权限"
+    code: system:gateway:updateAll
+    description: "system:gateway:updateAll：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-GETWAY-DELETE
+    name: "system:getway:delete 权限"
+    code: system:getway:delete
+    description: "system:getway:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-LOG-DELETE
+    name: "system:log:delete 权限"
+    code: system:log:delete
+    description: "system:log:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-LOG-DELETEBATCH
+    name: "system:log:deleteBatch 权限"
+    code: system:log:deleteBatch
+    description: "system:log:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-LOG-LIST
+    name: "system:log:list 权限"
+    code: system:log:list
+    description: "system:log:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ONLINE-FORCELOGOUT
+    name: "system:online:forceLogout 权限"
+    code: system:online:forceLogout
+    description: "system:online:forceLogout：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ONLINE-LIST
+    name: "system:online:list 权限"
+    code: system:online:list
+    description: "system:online:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-OSSFILE-DELETE
+    name: "system:ossFile:delete 权限"
+    code: system:ossFile:delete
+    description: "system:ossFile:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-OSSFILE-LIST
+    name: "system:ossFile:list 权限"
+    code: system:ossFile:list
+    description: "system:ossFile:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-OSSFILE-UPLOAD
+    name: "system:ossFile:upload 权限"
+    code: system:ossFile:upload
+    description: "system:ossFile:upload：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-ADD
+    name: "system:permission:add 权限"
+    code: system:permission:add
+    description: "system:permission:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-ADDRULE
+    name: "system:permission:addRule 权限"
+    code: system:permission:addRule
+    description: "system:permission:addRule：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-DELETE
+    name: "system:permission:delete 权限"
+    code: system:permission:delete
+    description: "system:permission:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-DELETEBATCH
+    name: "system:permission:deleteBatch 权限"
+    code: system:permission:deleteBatch
+    description: "system:permission:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-DELETERULE
+    name: "system:permission:deleteRule 权限"
+    code: system:permission:deleteRule
+    description: "system:permission:deleteRule：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-EDIT
+    name: "system:permission:edit 权限"
+    code: system:permission:edit
+    description: "system:permission:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-EDITRULE
+    name: "system:permission:editRule 权限"
+    code: system:permission:editRule
+    description: "system:permission:editRule：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-SAVEDEPART
+    name: "system:permission:saveDepart 权限"
+    code: system:permission:saveDepart
+    description: "system:permission:saveDepart：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-SAVEROLE
+    name: "system:permission:saveRole 权限"
+    code: system:permission:saveRole
+    description: "system:permission:saveRole：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-PERMISSION-SETDEFINDEX
+    name: "system:permission:setDefIndex 权限"
+    code: system:permission:setDefIndex
+    description: "system:permission:setDefIndex：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-QUARTZJOB-ADD
+    name: "system:quartzJob:add 权限"
+    code: system:quartzJob:add
+    description: "system:quartzJob:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-QUARTZJOB-DELETE
+    name: "system:quartzJob:delete 权限"
+    code: system:quartzJob:delete
+    description: "system:quartzJob:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-QUARTZJOB-DELETEBATCH
+    name: "system:quartzJob:deleteBatch 权限"
+    code: system:quartzJob:deleteBatch
+    description: "system:quartzJob:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-QUARTZJOB-EDIT
+    name: "system:quartzJob:edit 权限"
+    code: system:quartzJob:edit
+    description: "system:quartzJob:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-QUARTZJOB-EXECUTE
+    name: "system:quartzJob:execute 权限"
+    code: system:quartzJob:execute
+    description: "system:quartzJob:execute：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-QUARTZJOB-PAUSE
+    name: "system:quartzJob:pause 权限"
+    code: system:quartzJob:pause
+    description: "system:quartzJob:pause：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-QUARTZJOB-RESUME
+    name: "system:quartzJob:resume 权限"
+    code: system:quartzJob:resume
+    description: "system:quartzJob:resume：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLE-ADD
+    name: "system:role:add 权限"
+    code: system:role:add
+    description: "system:role:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLE-DELETE
+    name: "system:role:delete 权限"
+    code: system:role:delete
+    description: "system:role:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLE-DELETEBATCH
+    name: "system:role:deleteBatch 权限"
+    code: system:role:deleteBatch
+    description: "system:role:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLE-EDIT
+    name: "system:role:edit 权限"
+    code: system:role:edit
+    description: "system:role:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLE-LIST
+    name: "system:role:list 权限"
+    code: system:role:list
+    description: "system:role:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLE-QUERYALLNOBYTENANT
+    name: "system:role:queryallNoByTenant 权限"
+    code: system:role:queryallNoByTenant
+    description: "system:role:queryallNoByTenant：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLEINDEX-ADD
+    name: "system:roleindex:add 权限"
+    code: system:roleindex:add
+    description: "system:roleindex:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLEINDEX-DELETE
+    name: "system:roleindex:delete 权限"
+    code: system:roleindex:delete
+    description: "system:roleindex:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLEINDEX-DELETEBATCH
+    name: "system:roleindex:deleteBatch 权限"
+    code: system:roleindex:deleteBatch
+    description: "system:roleindex:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-ROLEINDEX-EDIT
+    name: "system:roleindex:edit 权限"
+    code: system:roleindex:edit
+    description: "system:roleindex:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-ADD
+    name: "system:sysAnnouncement:add 权限"
+    code: system:sysAnnouncement:add
+    description: "system:sysAnnouncement:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-DELETE
+    name: "system:sysAnnouncement:delete 权限"
+    code: system:sysAnnouncement:delete
+    description: "system:sysAnnouncement:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-DELETEBATCH
+    name: "system:sysAnnouncement:deleteBatch 权限"
+    code: system:sysAnnouncement:deleteBatch
+    description: "system:sysAnnouncement:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-DORELEASEDATA
+    name: "system:sysAnnouncement:doReleaseData 权限"
+    code: system:sysAnnouncement:doReleaseData
+    description: "system:sysAnnouncement:doReleaseData：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-DOREOVKEDATA
+    name: "system:sysAnnouncement:doReovkeData 权限"
+    code: system:sysAnnouncement:doReovkeData
+    description: "system:sysAnnouncement:doReovkeData：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-EDIT
+    name: "system:sysAnnouncement:edit 权限"
+    code: system:sysAnnouncement:edit
+    description: "system:sysAnnouncement:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-EDITIZTOP
+    name: "system:sysAnnouncement:editIzTop 权限"
+    code: system:sysAnnouncement:editIzTop
+    description: "system:sysAnnouncement:editIzTop：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-EXPORTXLS
+    name: "system:sysAnnouncement:exportXls 权限"
+    code: system:sysAnnouncement:exportXls
+    description: "system:sysAnnouncement:exportXls：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-IMPORTEXCEL
+    name: "system:sysAnnouncement:importExcel 权限"
+    code: system:sysAnnouncement:importExcel
+    description: "system:sysAnnouncement:importExcel：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-LIST
+    name: "system:sysAnnouncement:list 权限"
+    code: system:sysAnnouncement:list
+    description: "system:sysAnnouncement:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYSANNOUNCEMENT-SYNCNOTIC
+    name: "system:sysAnnouncement:syncNotic 权限"
+    code: system:sysAnnouncement:syncNotic
+    description: "system:sysAnnouncement:syncNotic：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYS_UGROUP-ADD
+    name: "system:sys_ugroup:add 权限"
+    code: system:sys_ugroup:add
+    description: "system:sys_ugroup:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYS_UGROUP-DELETE
+    name: "system:sys_ugroup:delete 权限"
+    code: system:sys_ugroup:delete
+    description: "system:sys_ugroup:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYS_UGROUP-DELETEBATCH
+    name: "system:sys_ugroup:deleteBatch 权限"
+    code: system:sys_ugroup:deleteBatch
+    description: "system:sys_ugroup:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYS_UGROUP-EDIT
+    name: "system:sys_ugroup:edit 权限"
+    code: system:sys_ugroup:edit
+    description: "system:sys_ugroup:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYS_UGROUP-EXPORTXLS
+    name: "system:sys_ugroup:exportXls 权限"
+    code: system:sys_ugroup:exportXls
+    description: "system:sys_ugroup:exportXls：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-SYS_UGROUP-IMPORTEXCEL
+    name: "system:sys_ugroup:importExcel 权限"
+    code: system:sys_ugroup:importExcel
+    description: "system:sys_ugroup:importExcel：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TABLEWHITE-ADD
+    name: "system:tableWhite:add 权限"
+    code: system:tableWhite:add
+    description: "system:tableWhite:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TABLEWHITE-DELETE
+    name: "system:tableWhite:delete 权限"
+    code: system:tableWhite:delete
+    description: "system:tableWhite:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TABLEWHITE-DELETEBATCH
+    name: "system:tableWhite:deleteBatch 权限"
+    code: system:tableWhite:deleteBatch
+    description: "system:tableWhite:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TABLEWHITE-EDIT
+    name: "system:tableWhite:edit 权限"
+    code: system:tableWhite:edit
+    description: "system:tableWhite:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TABLEWHITE-LIST
+    name: "system:tableWhite:list 权限"
+    code: system:tableWhite:list
+    description: "system:tableWhite:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TABLEWHITE-QUERYBYID
+    name: "system:tableWhite:queryById 权限"
+    code: system:tableWhite:queryById
+    description: "system:tableWhite:queryById：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-ADD
+    name: "system:tenant:add 权限"
+    code: system:tenant:add
+    description: "system:tenant:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-ADD-PACK
+    name: "system:tenant:add:pack 权限"
+    code: system:tenant:add:pack
+    description: "system:tenant:add:pack：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-ADDPACKSUSER
+    name: "system:tenant:addPacksUser 权限"
+    code: system:tenant:addPacksUser
+    description: "system:tenant:addPacksUser：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-CANCELTENANT
+    name: "system:tenant:cancelTenant 权限"
+    code: system:tenant:cancelTenant
+    description: "system:tenant:cancelTenant：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-DELETE
+    name: "system:tenant:delete 权限"
+    code: system:tenant:delete
+    description: "system:tenant:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-DELETE-PACK
+    name: "system:tenant:delete:pack 权限"
+    code: system:tenant:delete:pack
+    description: "system:tenant:delete:pack：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-DELETEBATCH
+    name: "system:tenant:deleteBatch 权限"
+    code: system:tenant:deleteBatch
+    description: "system:tenant:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-DELETETENANTLOGIC
+    name: "system:tenant:deleteTenantLogic 权限"
+    code: system:tenant:deleteTenantLogic
+    description: "system:tenant:deleteTenantLogic：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-EDIT
+    name: "system:tenant:edit 权限"
+    code: system:tenant:edit
+    description: "system:tenant:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-EDIT-PACK
+    name: "system:tenant:edit:pack 权限"
+    code: system:tenant:edit:pack
+    description: "system:tenant:edit:pack：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-GETTENANTLISTBYUSERID
+    name: "system:tenant:getTenantListByUserId 权限"
+    code: system:tenant:getTenantListByUserId
+    description: "system:tenant:getTenantListByUserId：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-INVITATION-USER
+    name: "system:tenant:invitation:user 权限"
+    code: system:tenant:invitation:user
+    description: "system:tenant:invitation:user：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-LEAVE
+    name: "system:tenant:leave 权限"
+    code: system:tenant:leave
+    description: "system:tenant:leave：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-LIST
+    name: "system:tenant:list 权限"
+    code: system:tenant:list
+    description: "system:tenant:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-PACKLIST
+    name: "system:tenant:packList 权限"
+    code: system:tenant:packList
+    description: "system:tenant:packList：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-QUERYLIST
+    name: "system:tenant:queryList 权限"
+    code: system:tenant:queryList
+    description: "system:tenant:queryList：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-RECYCLEBINPAGELIST
+    name: "system:tenant:recycleBinPageList 权限"
+    code: system:tenant:recycleBinPageList
+    description: "system:tenant:recycleBinPageList：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-REVERTTENANTLOGIC
+    name: "system:tenant:revertTenantLogic 权限"
+    code: system:tenant:revertTenantLogic
+    description: "system:tenant:revertTenantLogic：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-SYNCDEFAULTPACK
+    name: "system:tenant:syncDefaultPack 权限"
+    code: system:tenant:syncDefaultPack
+    description: "system:tenant:syncDefaultPack：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-TENANTPAGELIST
+    name: "system:tenant:tenantPageList 权限"
+    code: system:tenant:tenantPageList
+    description: "system:tenant:tenantPageList：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-UPDATEUSERTENANTSTATUS
+    name: "system:tenant:updateUserTenantStatus 权限"
+    code: system:tenant:updateUserTenantStatus
+    description: "system:tenant:updateUserTenantStatus：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-TENANT-USER-LIST
+    name: "system:tenant:user:list 权限"
+    code: system:tenant:user:list
+    description: "system:tenant:user:list：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-THIRD-CONFIG-DELETE
+    name: "system:third:config:delete 权限"
+    code: system:third:config:delete
+    description: "system:third:config:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-ADD
+    name: "system:user:add 权限"
+    code: system:user:add
+    description: "system:user:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-ADDTENANTUSER
+    name: "system:user:addTenantUser 权限"
+    code: system:user:addTenantUser
+    description: "system:user:addTenantUser：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-ADDUSERROLE
+    name: "system:user:addUserRole 权限"
+    code: system:user:addUserRole
+    description: "system:user:addUserRole：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-APP-EDIT
+    name: "system:user:app:edit 权限"
+    code: system:user:app:edit
+    description: "system:user:app:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-CHANGEPWD
+    name: "system:user:changepwd 权限"
+    code: system:user:changepwd
+    description: "system:user:changepwd：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-DELETE
+    name: "system:user:delete 权限"
+    code: system:user:delete
+    description: "system:user:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-DELETEBATCH
+    name: "system:user:deleteBatch 权限"
+    code: system:user:deleteBatch
+    description: "system:user:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-DELETERECYCLEBIN
+    name: "system:user:deleteRecycleBin 权限"
+    code: system:user:deleteRecycleBin
+    description: "system:user:deleteRecycleBin：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-DELETEROLE
+    name: "system:user:deleteRole 权限"
+    code: system:user:deleteRole
+    description: "system:user:deleteRole：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-DELETEROLEBATCH
+    name: "system:user:deleteRoleBatch 权限"
+    code: system:user:deleteRoleBatch
+    description: "system:user:deleteRoleBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-DELETEUSERINDEPART
+    name: "system:user:deleteUserInDepart 权限"
+    code: system:user:deleteUserInDepart
+    description: "system:user:deleteUserInDepart：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-DELETEUSERINDEPARTBATCH
+    name: "system:user:deleteUserInDepartBatch 权限"
+    code: system:user:deleteUserInDepartBatch
+    description: "system:user:deleteUserInDepartBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-EDIT
+    name: "system:user:edit 权限"
+    code: system:user:edit
+    description: "system:user:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-EDITDEPARTWITHUSER
+    name: "system:user:editDepartWithUser 权限"
+    code: system:user:editDepartWithUser
+    description: "system:user:editDepartWithUser：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-EXPORT
+    name: "system:user:export 权限"
+    code: system:user:export
+    description: "system:user:export：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-FROZENBATCH
+    name: "system:user:frozenBatch 权限"
+    code: system:user:frozenBatch
+    description: "system:user:frozenBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-IMPORT
+    name: "system:user:import 权限"
+    code: system:user:import
+    description: "system:user:import：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-LISTALL
+    name: "system:user:listAll 权限"
+    code: system:user:listAll
+    description: "system:user:listAll：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-PUTRECYCLEBIN
+    name: "system:user:putRecycleBin 权限"
+    code: system:user:putRecycleBin
+    description: "system:user:putRecycleBin：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-QUERYBYID
+    name: "system:user:queryById 权限"
+    code: system:user:queryById
+    description: "system:user:queryById：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-QUERYUSERROLE
+    name: "system:user:queryUserRole 权限"
+    code: system:user:queryUserRole
+    description: "system:user:queryUserRole：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-RESETPASSWORD
+    name: "system:user:resetPassword 权限"
+    code: system:user:resetPassword
+    description: "system:user:resetPassword：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-SETTING-EDIT
+    name: "system:user:setting:edit 权限"
+    code: system:user:setting:edit
+    description: "system:user:setting:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-SYSTEM-USER-UPDATEPWD
+    name: "system:user:updatepwd 权限"
+    code: system:user:updatepwd
+    description: "system:user:updatepwd：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-USER-FORM-PHONE
+    name: "user:form:phone 权限"
+    code: user:form:phone
+    description: "user:form:phone：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-WORDTPL-TEMPLATE-ADD
+    name: "wordtpl:template:add 权限"
+    code: wordtpl:template:add
+    description: "wordtpl:template:add：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-WORDTPL-TEMPLATE-DELETE
+    name: "wordtpl:template:delete 权限"
+    code: wordtpl:template:delete
+    description: "wordtpl:template:delete：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-WORDTPL-TEMPLATE-DELETEBATCH
+    name: "wordtpl:template:deleteBatch 权限"
+    code: wordtpl:template:deleteBatch
+    description: "wordtpl:template:deleteBatch：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-WORDTPL-TEMPLATE-DESIGN
+    name: "wordtpl:template:design 权限"
+    code: wordtpl:template:design
+    description: "wordtpl:template:design：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT
+  - permissionId: PERM-WORDTPL-TEMPLATE-EDIT
+    name: "wordtpl:template:edit 权限"
+    code: wordtpl:template:edit
+    description: "wordtpl:template:edit：sys_permission 种子数据中定义的按钮/接口权限码。"
+    description_source: doc_name
+    targetType: BEHAVIOR
+    targetRef: null
+    # TODO: 无源码证据（数据范围规则未取得证据）
+    dataScope: unknown
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.perms（种子数据解析，tier=L1）
+    # evidence: FACT

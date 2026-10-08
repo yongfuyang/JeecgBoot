@@ -1,0 +1,19 @@
+{
+  "description": "jeecg 逆向十二模型",
+  "project_code": "jeecg-aio",
+  "scan_id": 944,
+  "generated_at": "2026-10-01",
+  "model_files": [
+    "m1-jeecg-object-model.yaml",
+    "m3-jeecg-rule-model.yaml",
+    "m2-jeecg-behavior-model.yaml",
+    "me-jeecg-event-model.yaml",
+    "m5-jeecg-actor-model.yaml",
+    "m6-jeecg-flow-model.yaml",
+    "m7-jeecg-report-model.yaml",
+    "m4-jeecg-scenario-model.yaml",
+    "mu-jeecg-ui-model.yaml",
+    "mm-jeecg-mapping-model.yaml",
+    "mi-jeecg-interface-model.yaml"
+  ]
+}

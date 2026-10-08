@@ -1,0 +1,1714 @@
+model_type: UI
+version: "6.0"
+domain: jeecg
+description: "jeecg-aio 逆向 MU 界面模型（菜单来自 sys_permission 种子数据，页面来自前端路由）"
+
+application:
+  name: JeecgBoot 低代码平台
+  menus:
+    - id: MENU-46878978
+      name: 菜单管理
+      type: MENU
+      path: /system/menu
+      icon: ant-design:menu-fold-outlined
+      permission: ""
+      sort: 0.00
+      description: "菜单管理：路径 /system/menu"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1170592628746878978（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-10765570
+      name: 租户用户
+      type: MENU
+      path: /system/tenant/TenantUserList
+      icon: ant-design:user
+      permission: ""
+      sort: 2.00
+      description: "租户用户：路径 /system/tenant/TenantUserList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.119213522910765570（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-34307841
+      name: 多租户管理
+      type: MENU
+      path: /system/tenant
+      icon: ant-design:appstore-twotone
+      permission: ""
+      sort: 6.00
+      description: "多租户管理：路径 /system/tenant"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1280350452934307841（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-14825473
+      name: 工作台
+      type: MENU
+      path: /dashboard/workbench
+      icon: ant-design:appstore-twotone
+      permission: ""
+      sort: 2.00
+      description: "工作台：路径 /dashboard/workbench"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108176814825473（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-74872321
+      name: 基于前端权限
+      type: MENU
+      path: /permission/front
+      icon: ""
+      permission: ""
+      sort: 0.00
+      description: "基于前端权限：路径 /permission/front"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108177074872321（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-88118529
+      name: 基于后台权限
+      type: MENU
+      path: /permission/back
+      icon: ""
+      permission: ""
+      sort: 1.00
+      description: "基于后台权限：路径 /permission/back"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108177188118529（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-57666049
+      name: websocket测试
+      type: MENU
+      path: /feat/ws
+      icon: ""
+      permission: ""
+      sort: 1.00
+      description: "websocket测试：路径 /feat/ws"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108178257666049（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-21243905
+      name: 登录过期
+      type: MENU
+      path: /feat/session-timeout
+      icon: ""
+      permission: ""
+      sort: 2.00
+      description: "登录过期：路径 /feat/session-timeout"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108178421243905（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-11977473
+      name: 面包屑导航
+      type: MENU
+      path: /feat/breadcrumb
+      icon: ant-design:right-square-filled
+      permission: ""
+      sort: 5.00
+      description: "面包屑导航：路径 /feat/breadcrumb"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108178911977473（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-70054145
+      name: 全屏
+      type: MENU
+      path: /feat/full-screen
+      icon: ""
+      permission: ""
+      sort: 14.00
+      description: "全屏：路径 /feat/full-screen"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108180770054145（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-85309954
+      name: 错误日志
+      type: MENU
+      path: /feat/error-log
+      icon: ""
+      permission: ""
+      sort: 17.00
+      description: "错误日志：路径 /feat/error-log"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108183085309954（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-95688450
+      name: Tab带参
+      type: MENU
+      path: /feat/testTab/:id
+      icon: ant-design:insert-row-above-outlined
+      permission: ""
+      sort: 19.00
+      description: "Tab带参：路径 /feat/testTab/:id"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108183395688450（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-92157442
+      name: Menu带参
+      type: MENU
+      path: /feat/testParam/:id
+      icon: ant-design:menu-outlined
+      permission: ""
+      sort: 20.00
+      description: "Menu带参：路径 /feat/testParam/:id"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108183492157442（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-78072833
+      name: 表单页
+      type: MENU
+      path: /page-demo/form
+      icon: ant-design:form-outlined
+      permission: ""
+      sort: 0.00
+      description: "表单页：路径 /page-demo/form"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108187678072833（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-71010818
+      name: 详情页
+      type: MENU
+      path: /page-demo/desc
+      icon: ant-design:border-right-outlined
+      permission: ""
+      sort: 1.00
+      description: "详情页：路径 /page-demo/desc"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108187871010818（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-34588674
+      name: 结果页
+      type: MENU
+      path: /page-demo/result
+      icon: ant-design:account-book-outlined
+      permission: ""
+      sort: 2.00
+      description: "结果页：路径 /page-demo/result"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108188034588674（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-78521602
+      name: 个人页
+      type: MENU
+      path: /page-demo/account
+      icon: ant-design:user-outlined
+      permission: ""
+      sort: 3.00
+      description: "个人页：路径 /page-demo/account"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108188378521602（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-42099458
+      name: 异常页
+      type: MENU
+      path: /page-demo/exception
+      icon: ant-design:bug-twotone
+      permission: ""
+      sort: 4.00
+      description: "异常页：路径 /page-demo/exception"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108188542099458（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-14065922
+      name: 列表页
+      type: MENU
+      path: /page-demo/list
+      icon: ant-design:table-outlined
+      permission: ""
+      sort: 5.00
+      description: "列表页：路径 /page-demo/list"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108188714065922（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-58311537
+      name: Jeecg组件示例
+      type: MENU
+      path: /comp/jeecg
+      icon: ant-design:sketch-outlined
+      permission: ""
+      sort: 1.00
+      description: "Jeecg组件示例：路径 /comp/jeecg"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108197958311537（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-58311637
+      name: 弹框抽屉
+      type: MENU
+      path: /comp/modal
+      icon: ant-design:laptop-outlined
+      permission: ""
+      sort: 6.00
+      description: "弹框抽屉：路径 /comp/modal"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108197958311637（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-58311677
+      name: 第三方组件
+      type: MENU
+      path: /comp/third
+      icon: ant-design:slack-outlined
+      permission: ""
+      sort: 7.00
+      description: "第三方组件：路径 /comp/third"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108197958311677（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-58311937
+      name: Form示例
+      type: MENU
+      path: /comp/form
+      icon: ant-design:pic-left-outlined
+      permission: ""
+      sort: 2.00
+      description: "Form示例：路径 /comp/form"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108197958311937（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-58315557
+      name: 基础组件
+      type: MENU
+      path: /comp/basic
+      icon: ant-design:insert-row-left-outlined
+      permission: ""
+      sort: 1.00
+      description: "基础组件：路径 /comp/basic"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108197958315557（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-13501186
+      name: Table示例
+      type: MENU
+      path: /comp/table
+      icon: ant-design:table-outlined
+      permission: ""
+      sort: 3.00
+      description: "Table示例：路径 /comp/table"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108198113501186（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-13735425
+      name: Tree示例
+      type: MENU
+      path: /comp/tree
+      icon: ant-design:partition-outlined
+      permission: ""
+      sort: 4.00
+      description: "Tree示例：路径 /comp/tree"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108199413735425（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-39564546
+      name: 编辑器
+      type: MENU
+      path: /comp/editor
+      icon: ant-design:credit-card-twotone
+      permission: ""
+      sort: 5.00
+      description: "编辑器：路径 /comp/editor"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108199539564546（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-31839234
+      name: 滚动组件
+      type: MENU
+      path: /comp/scroll
+      icon: ant-design:column-height-outlined
+      permission: ""
+      sort: 11.00
+      description: "滚动组件：路径 /comp/scroll"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108199631839234（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-02050050
+      name: 懒加载组件
+      type: MENU
+      path: /comp/lazy
+      icon: ant-design:small-dash-outlined
+      permission: ""
+      sort: 15.00
+      description: "懒加载组件：路径 /comp/lazy"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108200802050050（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-19490562
+      name: 验证组件
+      type: MENU
+      path: /comp/verify
+      icon: ant-design:field-binary-outlined
+      permission: ""
+      sort: 16.00
+      description: "验证组件：路径 /comp/verify"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108200919490562（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-60284417
+      name: 百度地图
+      type: MENU
+      path: /charts/baiduMap
+      icon: ""
+      permission: ""
+      sort: 0.00
+      description: "百度地图：路径 /charts/baiduMap"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108217860284417（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-49028097
+      name: 高德地图
+      type: MENU
+      path: /charts/aMap
+      icon: ""
+      permission: ""
+      sort: 1.00
+      description: "高德地图：路径 /charts/aMap"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108218049028097（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-09738242
+      name: Echarts
+      type: MENU
+      path: /charts/echarts
+      icon: ""
+      permission: ""
+      sort: 3.00
+      description: "Echarts：路径 /charts/echarts"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108218409738242（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-92531970
+      name: 项目文档(内嵌)
+      type: MENU
+      path: /frame/doc
+      icon: ""
+      permission: ""
+      sort: 0.00
+      description: "项目文档(内嵌)：路径 /frame/doc"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108219592531970（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-93858561
+      name: antVue文档(内嵌)
+      type: MENU
+      path: /frame/antv
+      icon: ""
+      permission: ""
+      sort: 1.00
+      description: "antVue文档(内嵌)：路径 /frame/antv"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108219793858561（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-37791489
+      name: 项目文档(外链)
+      type: MENU
+      path: /
+      icon: ""
+      permission: ""
+      sort: 2.00
+      description: "项目文档(外链)：路径 /"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108220137791489（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-23667458
+      name: Menu1
+      type: MENU
+      path: /level/menu1
+      icon: ""
+      permission: ""
+      sort: 0.00
+      description: "Menu1：路径 /level/menu1"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108220523667458（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-24994049
+      name: Menu2
+      type: MENU
+      path: /level/menu2
+      icon: ""
+      permission: ""
+      sort: 1.00
+      description: "Menu2：路径 /level/menu2"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108220724994049（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-51271937
+      name: Mock示例
+      type: MENU
+      path: /system
+      icon: ion:settings-outline
+      permission: ""
+      sort: 10.00
+      description: "Mock示例：路径 /system"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108221551271937（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-63230978
+      name: 引导页
+      type: MENU
+      path: /setup/index
+      icon: whh:paintroll
+      permission: ""
+      sort: 12.00
+      description: "引导页：路径 /setup/index"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438108225263230978（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-61403137
+      name: 职务级别
+      type: MENU
+      path: /system/position
+      icon: ant-design:database-filled
+      permission: ""
+      sort: 5.00
+      description: "职务级别：路径 /system/position"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438469604861403137（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-17495298
+      name: 分类字典
+      type: MENU
+      path: /system/category
+      icon: ant-design:group-outlined
+      permission: ""
+      sort: 9.00
+      description: "分类字典：路径 /system/category"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438782530717495298（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-87074050
+      name: 数据字典
+      type: MENU
+      path: /system/dict
+      icon: ant-design:hdd-twotone
+      permission: ""
+      sort: 4.00
+      description: "数据字典：路径 /system/dict"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438782641187074050（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-80210178
+      name: 通知公告
+      type: MENU
+      path: /system/notice
+      icon: ant-design:bell-outlined
+      permission: ""
+      sort: 8.00
+      description: "通知公告：路径 /system/notice"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1438782851980210178（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-91409153
+      name: 网关路由
+      type: MENU
+      path: /monitor/route
+      icon: ant-design:branches-outlined
+      permission: ""
+      sort: 0.00
+      description: "网关路由：路径 /monitor/route"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439399179791409153（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-73993730
+      name: 定时任务
+      type: MENU
+      path: /monitor/quartz
+      icon: ant-design:history-outlined
+      permission: ""
+      sort: 1.00
+      description: "定时任务：路径 /monitor/quartz"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439488251473993730（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-94937090
+      name: 数据源管理
+      type: MENU
+      path: /monitor/datasource
+      icon: ant-design:hdd-filled
+      permission: ""
+      sort: 3.00
+      description: "数据源管理：路径 /monitor/datasource"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439511654494937090（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-92473089
+      name: 数据日志
+      type: MENU
+      path: /monitor/datalog
+      icon: ant-design:funnel-plot-twotone
+      permission: ""
+      sort: 6.00
+      description: "数据日志：路径 /monitor/datalog"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439531077792473089（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-76973057
+      name: 日志管理
+      type: MENU
+      path: /monitor/log
+      icon: ant-design:interaction-outlined
+      permission: ""
+      sort: 5.00
+      description: "日志管理：路径 /monitor/log"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439533711676973057（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-52575489
+      name: 我的消息
+      type: MENU
+      path: /monitor/mynews
+      icon: ""
+      permission: ""
+      sort: 6.00
+      description: "我的消息：路径 /monitor/mynews"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439542701152575489（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-66064642
+      name: SQL监控
+      type: MENU
+      path: /monitor/druid
+      icon: ant-design:rocket-filled
+      permission: ""
+      sort: 8.00
+      description: "SQL监控：路径 /monitor/druid"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439784356766064642（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-14342913
+      name: 性能监控
+      type: MENU
+      path: /monitor/server
+      icon: ant-design:thunderbolt-filled
+      permission: ""
+      sort: 9.00
+      description: "性能监控：路径 /monitor/server"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439797053314342913（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-94740994
+      name: Redis监控
+      type: MENU
+      path: /monitor/redis
+      icon: ant-design:trademark-outlined
+      permission: ""
+      sort: 10.00
+      description: "Redis监控：路径 /monitor/redis"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439839507094740994（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-30113793
+      name: 请求追踪
+      type: MENU
+      path: /monitor/trace
+      icon: ant-design:ie-circle-filled
+      permission: ""
+      sort: 11.00
+      description: "请求追踪：路径 /monitor/trace"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1439842640030113793（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-64358402
+      name: 消息模板
+      type: MENU
+      path: /message/template
+      icon: ""
+      permission: ""
+      sort: 2.00
+      description: "消息模板：路径 /message/template"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1443391584864358402（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-30722306
+      name: JEECG官网
+      type: MENU
+      path: /
+      icon: ""
+      permission: ""
+      sort: 1.00
+      description: "JEECG官网：路径 /"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1446778415130722306（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-47396354
+      name: EChartDemo
+      type: MENU
+      path: /report/chartDemo
+      icon: ""
+      permission: ""
+      sort: 1.00
+      description: "EChartDemo：路径 /report/chartDemo"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1447763517847396354（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-02859522
+      name: 布局统计报表
+      type: MENU
+      path: /statisticst
+      icon: ""
+      permission: ""
+      sort: 2.00
+      description: "布局统计报表：路径 /statisticst"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1448252726202859522（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-84353026
+      name: 报表设计器
+      type: MENU
+      path: /jmreport
+      icon: ""
+      permission: ""
+      sort: 1.00
+      description: "报表设计器：路径 /jmreport"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1452508868884353026（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-94850305
+      name: Online表单开发
+      type: MENU
+      path: /online/cgform
+      icon: ""
+      permission: ""
+      sort: 1.00
+      description: "Online表单开发：路径 /online/cgform"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1455101470794850305（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-07472898
+      name: 通讯录
+      type: MENU
+      path: /address
+      icon: ant-design:book-outlined
+      permission: ""
+      sort: 20.00
+      description: "通讯录：路径 /address"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1455735714507472898（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-02879745
+      name: 系统编码规则
+      type: MENU
+      path: /system/fillrule
+      icon: ""
+      permission: ""
+      sort: 6.00
+      description: "系统编码规则：路径 /system/fillrule"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1457678003102879745（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-30232321
+      name: 系统校验规则
+      type: MENU
+      path: /system/checkrule
+      icon: ""
+      permission: ""
+      sort: 5.00
+      description: "系统校验规则：路径 /system/checkrule"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1458353686530232321（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-37176577
+      name: Online报表配置
+      type: MENU
+      path: /online/cgreport
+      icon: ""
+      permission: ""
+      sort: 2.00
+      description: "Online报表配置：路径 /online/cgreport"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1460888189937176577（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-43347202
+      name: Online表单视图
+      type: MENU
+      path: /online/copyform/:code
+      icon: ""
+      permission: ""
+      sort: 99.00
+      description: "Online表单视图：路径 /online/copyform/:code"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1461270075543347202（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-76913153
+      name: Online图表配置
+      type: MENU
+      path: /online/graphreport
+      icon: ""
+      permission: ""
+      sort: 3.00
+      description: "Online图表配置：路径 /online/graphreport"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1461278375076913153（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-25558017
+      name: AUTO在线报表
+      type: MENU
+      path: /online/cgreport/:id
+      icon: ""
+      permission: ""
+      sort: 21.00
+      description: "AUTO在线报表：路径 /online/cgreport/:id"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1461291438825558017（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-13782273
+      name: AUTO在线表单
+      type: MENU
+      path: /online/cgformList/:id
+      icon: ""
+      permission: ""
+      sort: 25.00
+      description: "AUTO在线表单：路径 /online/cgformList/:id"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1465686870713782273（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-93187073
+      name: 大屏和仪表盘
+      type: MENU
+      path: /report/drag
+      icon: ""
+      permission: ""
+      sort: 2.00
+      description: "大屏和仪表盘：路径 /report/drag"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1473927410093187073（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-30999041
+      name: AUTO树表单列表
+      type: MENU
+      path: /online/cgformTreeList/:id
+      icon: ""
+      permission: ""
+      sort: 25.00
+      description: "AUTO树表单列表：路径 /online/cgformTreeList/:id"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1509417558230999041（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-02627585
+      name: Online报表例子
+      type: MENU
+      path: /online/cgreport/1256627801873821698
+      icon: ""
+      permission: ""
+      sort: 3.00
+      description: "Online报表例子：路径 /online/cgreport/1256627801873821698"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1580833876002627585（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-90257922
+      name: Online表单例子
+      type: MENU
+      path: /online/cgformList/d35109c3632c4952a19ecc094943dd71
+      icon: ""
+      permission: ""
+      sort: 4.00
+      description: "Online表单例子：路径 /online/cgformList/d35109c3632c4952a19ecc094943dd71"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1580834045490257922（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-77483522
+      name: 积木报表例子
+      type: MENU
+      path: /jmreport/view/961455b47c0b86dc961e90b5893bff05
+      icon: ""
+      permission: ""
+      sort: 5.00
+      description: "积木报表例子：路径 /jmreport/view/961455b47c0b86dc961e90b5893bff05"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1580835899477483522（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-41933058
+      name: 生产销售监控大屏
+      type: MENU
+      path: /test/bigScreen/templat/index1
+      icon: ""
+      permission: ""
+      sort: 6.00
+      description: "生产销售监控大屏：路径 /test/bigScreen/templat/index1"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1580877743141933058（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-31964929
+      name: 智慧物流监控大屏
+      type: MENU
+      path: /test/bigScreen/templat/index2
+      icon: ""
+      permission: ""
+      sort: 7.00
+      description: "智慧物流监控大屏：路径 /test/bigScreen/templat/index2"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1580877931331964929（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-72504321
+      name: 积木大屏案例
+      type: MENU
+      path: /test/jmbigscreen2
+      icon: ""
+      permission: ""
+      sort: 9.00
+      description: "积木大屏案例：路径 /test/jmbigscreen2"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1580878668472504321（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-97734146
+      name: 带参数报表
+      type: MENU
+      path: /online/cgreport/1590154651759259649?sex=1
+      icon: ""
+      permission: ""
+      sort: 11.00
+      description: "带参数报表：路径 /online/cgreport/1590154651759259649?sex=1"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1590154870697734146（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-56920321
+      name: 在线用户
+      type: MENU
+      path: /system/onlineuser
+      icon: ant-design:aliwangwang-outlined
+      permission: ""
+      sort: 12.00
+      description: "在线用户：路径 /system/onlineuser"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1594930803956920321（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-93747970
+      name: 用户设置
+      type: MENU
+      path: /system/usersetting
+      icon: ant-design:setting-twotone
+      permission: ""
+      sort: 12.00
+      description: "用户设置：路径 /system/usersetting"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1596141938193747970（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-65786625
+      name: 租户角色
+      type: MENU
+      path: /system/role/TenantRoleList
+      icon: ant-design:line-height-outlined
+      permission: ""
+      sort: 3.00
+      description: "租户角色：路径 /system/role/TenantRoleList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1597419994965786625（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-57532673
+      name: 官网
+      type: MENU
+      path: https://jeecg.com
+      icon: ant-design:layout-filled
+      permission: ""
+      sort: 5.00
+      description: "官网：路径 https://jeecg.com"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1620709334357532673（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-48291586
+      name: 第三方配置
+      type: MENU
+      path: /third/app
+      icon: ant-design:setting-outlined
+      permission: ""
+      sort: 13.00
+      description: "第三方配置：路径 /third/app"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1629109281748291586（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-56171010
+      name: 租户默认套餐
+      type: MENU
+      path: /tenant/TenantDefaultPack
+      icon: ant-design:deployment-unit-outlined
+      permission: ""
+      sort: 7.00
+      description: "租户默认套餐：路径 /tenant/TenantDefaultPack"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1668174661456171010（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-93131521
+      name: AUTO在线ERP表单
+      type: MENU
+      path: /online/cgformErpList/:id
+      icon: ""
+      permission: ""
+      sort: 21.00
+      description: "AUTO在线ERP表单：路径 /online/cgformErpList/:id"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1691031996d593131521（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-31315212
+      name: AUTO在线一对多内嵌
+      type: MENU
+      path: /online/cgformInnerTableList/:id
+      icon: ""
+      permission: ""
+      sort: 21.00
+      description: "AUTO在线一对多内嵌：路径 /online/cgformInnerTableList/:id"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1691031996d5931315212（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-31315213
+      name: AUTO在线Tab风格
+      type: MENU
+      path: /online/cgformTabList/:id
+      icon: ""
+      permission: ""
+      sort: 21.00
+      description: "AUTO在线Tab风格：路径 /online/cgformTabList/:id"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1691031996d5931315213（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-19839746
+      name: 白名单管理
+      type: MENU
+      path: /system/tableWhiteList
+      icon: ant-design:table-outlined
+      permission: ""
+      sort: 4.00
+      description: "白名单管理：路径 /system/tableWhiteList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1701575168519839746（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-26285826
+      name: AUTO在线表单详情
+      type: MENU
+      path: /online/cgformDetail/:id
+      icon: ""
+      permission: ""
+      sort: 21.00
+      description: "AUTO在线表单详情：路径 /online/cgformDetail/:id"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1746709108126285826（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-57493801
+      name: 用户组管理
+      type: MENU
+      path: /system/ugroup/sysUgroupList
+      icon: ant-design:user-outlined
+      permission: ""
+      sort: 2.10
+      description: "用户组管理：路径 /system/ugroup/sysUgroupList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.177217757493801（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-30480129
+      name: 仪表盘集成示例
+      type: MENU
+      path: /drag/view/964024982110830592
+      icon: ""
+      permission: ""
+      sort: 3.00
+      description: "仪表盘集成示例：路径 /drag/view/964024982110830592"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1804046424930480129（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-21749505
+      name: AI流程设计
+      type: MENU
+      path: /process/list/airag
+      icon: ant-design:box-plot-outlined
+      permission: ""
+      sort: 2.00
+      description: "AI流程设计：路径 /process/list/airag"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1890213291321749505（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-93022209
+      name: AI模型配置
+      type: MENU
+      path: /super/airag/aimodel/AiModelList
+      icon: ant-design:setting-twotone
+      permission: ""
+      sort: 4.00
+      description: "AI模型配置：路径 /super/airag/aimodel/AiModelList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1892553778493022209（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-28226561
+      name: AI知识库
+      type: MENU
+      path: /super/airag/aiknowledge/AiKnowledgeBaseList
+      icon: ant-design:book-twotone
+      permission: ""
+      sort: 3.00
+      description: "AI知识库：路径 /super/airag/aiknowledge/AiKnowledgeBaseList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1892557342028226561（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-50578689
+      name: AI应用管理
+      type: MENU
+      path: /super/airag/aiapp/AiAppList
+      icon: ant-design:appstore-twotone
+      permission: ""
+      sort: 1.00
+      description: "AI应用管理：路径 /super/airag/aiapp/AiAppList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1893865471550578689（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-90643458
+      name: AI聊天
+      type: MENU
+      path: /super/airag/aiapp/chat/AiChat
+      icon: ant-design:aliwangwang-outlined
+      permission: ""
+      sort: 5.00
+      description: "AI聊天：路径 /super/airag/aiapp/chat/AiChat"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1895401981290643458（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-db67d96a
+      name: 角色管理
+      type: MENU
+      path: /system/role
+      icon: ant-design:solution
+      permission: ""
+      sort: 2.00
+      description: "角色管理：路径 /system/role"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.190c2b43bec6a5f7a4194a85db67d96a（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-37606914
+      name: OpenAPI
+      type: MENU
+      path: /openapi
+      icon: ant-design:swap-outlined
+      permission: ""
+      sort: 4.00
+      description: "OpenAPI：路径 /openapi"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1922109301837606914（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-91608066
+      name: APP版本管理
+      type: MENU
+      path: /app/version
+      icon: ""
+      permission: ""
+      sort: 11.00
+      description: "APP版本管理：路径 /app/version"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1930152938891608066（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-33301506
+      name: 首页配置
+      type: MENU
+      path: /system/homeConfig
+      icon: ant-design:appstore-outlined
+      permission: ""
+      sort: 1.00
+      description: "首页配置：路径 /system/homeConfig"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1939572818833301506（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-09257473
+      name: 租户部门
+      type: MENU
+      path: /depart/TenantDepartList
+      icon: ant-design:apartment-outlined
+      permission: ""
+      sort: 3.30
+      description: "租户部门：路径 /depart/TenantDepartList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1961009998209257473（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-97710081
+      name: 租户套餐
+      type: MENU
+      path: /pack/TenantCurrentPackList
+      icon: ant-design:read-filled
+      permission: ""
+      sort: 3.40
+      description: "租户套餐：路径 /pack/TenantCurrentPackList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1961253156897710081（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-17281537
+      name: 租户职务
+      type: MENU
+      path: /position/TenantPositionList
+      icon: ant-design:user-outlined
+      permission: ""
+      sort: 3.50
+      description: "租户职务：路径 /position/TenantPositionList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1963086454217281537（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-68722178
+      name: 我的租户
+      type: MENU
+      path: /my/MyTenantDetail
+      icon: ant-design:user-outlined
+      permission: ""
+      sort: 0.00
+      description: "我的租户：路径 /my/MyTenantDetail"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1963133393868722178（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-87781889
+      name: MCP配置
+      type: MENU
+      path: /super/airag/aimcp/AiragMcpList
+      icon: ant-design:tool-twotone
+      permission: ""
+      sort: 5.00
+      description: "MCP配置：路径 /super/airag/aimcp/AiragMcpList"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1980223355087781889（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-13341698
+      name: 应用门户
+      type: MENU
+      path: /app/portal
+      icon: ant-design:home-outlined
+      permission: ""
+      sort: 20.00
+      description: "应用门户：路径 /app/portal"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.1996422809213341698（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-76606210
+      name: AI工具箱
+      type: MENU
+      path: /ai/box
+      icon: ant-design:tool-outlined
+      permission: ""
+      sort: 11.00
+      description: "AI工具箱：路径 /ai/box"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.2012375501376606210（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-54974466
+      name: 提示词管理
+      type: MENU
+      path: /ai/prompt
+      icon: ant-design:star-outlined
+      permission: ""
+      sort: 10.00
+      description: "提示词管理：路径 /ai/prompt"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.2012376076054974466（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-39307010
+      name: 嵌套大屏示例
+      type: MENU
+      path: /demo/example/example01
+      icon: ant-design:area-chart-outlined
+      permission: ""
+      sort: 20.00
+      description: "嵌套大屏示例：路径 /demo/example/example01"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.2056723764139307010（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-84ca059d
+      name: 用户管理
+      type: MENU
+      path: /system/user
+      icon: ant-design:user
+      permission: ""
+      sort: 1.00
+      description: "用户管理：路径 /system/user"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.3f915b2769fc80648e92d04e84ca059d（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-e74511fc
+      name: 部门管理
+      type: MENU
+      path: /system/depart
+      icon: ant-design:team
+      permission: ""
+      sort: 3.00
+      description: "部门管理：路径 /system/depart"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.45c966826eeff4c99b8f8ebfe74511fc（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-92456828
+      name: 我的部门
+      type: MENU
+      path: /system/depart-user
+      icon: ant-design:home-outlined
+      permission: ""
+      sort: 3.00
+      description: "我的部门：路径 /system/depart-user"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.5c2f42277948043026b7a14692456828（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-2788a385
+      name: 首页
+      type: MENU
+      path: /dashboard/analysis
+      icon: ant-design:qrcode-outlined
+      permission: ""
+      sort: 1.00
+      description: "首页：路径 /dashboard/analysis"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.9502685863ab87f0ad1134142788a385（种子数据解析，tier=L1）
+      # evidence: FACT
+    - id: MENU-7f8afcaf
+      name: Online图表示例
+      type: MENU
+      path: /online/graphreport/chart/0dbeb0dfc3ec18f0ce8d1d0caeeb6095
+      icon: ""
+      permission: ""
+      sort: 0.00
+      description: "Online图表示例：路径 /online/graphreport/chart/0dbeb0dfc3ec18f0ce8d1d0caeeb6095"
+      description_source: doc_name
+      # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#sys_permission.ca784c27782b4bd1b1fe98627f8afcaf（种子数据解析，tier=L1）
+      # evidence: FACT
+
+  # 说明：sys_permission 种子共 250 条 menu_type=1 菜单，此处列出根菜单 113 条；完整菜单树（含子菜单与 288 条按钮权限）见 `business-architecture.md` 与 `_reverse_state/seed/seed-data.json`。
+
+screens:
+  - screenId: SCREEN-DASHBOARD-001
+    name: routes.dashboard.dashboard
+    path: /dashboard
+    description: "routes.dashboard.dashboard：路径 /dashboard"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/mock/sys/menu.ts#/dashboard（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-SYSTEM-002
+    name: routes.demo.permission.permission
+    path: /permission
+    description: "routes.demo.permission.permission：路径 /permission"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/mock/sys/menu.ts#/permission（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-SYSTEM-003
+    name: routes.demo.level.level
+    path: /level
+    description: "routes.demo.level.level：路径 /level"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/mock/sys/menu.ts#/level（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-SYSTEM-004
+    name: routes.demo.system.moduleName
+    path: /system
+    description: "routes.demo.system.moduleName：路径 /system"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/mock/sys/menu.ts#/system（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-SYSTEM-005
+    name: routes.demo.iframe.frame
+    path: /link
+    description: "routes.demo.iframe.frame：路径 /link"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/mock/sys/menu.ts#/link（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-006
+    name: ErrorPage
+    path: /:path(.*)*
+    description: "ErrorPage：路径 /:path(.*)*"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/basic.ts#/:path(.*)*（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-007
+    name: /redirect
+    path: /redirect
+    description: "/redirect：路径 /redirect"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/basic.ts#/redirect（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-008
+    name: ErrorLog
+    path: /redirect/:path(.*)
+    description: "ErrorLog：路径 /redirect/:path(.*)"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/basic.ts#/redirect/:path(.*)（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-009
+    name: ErrorLog
+    path: /error-log
+    description: "ErrorLog：路径 /error-log"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/basic.ts#/error-log（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-010
+    name: Root
+    path: /
+    description: "Root：路径 /"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/index.ts#/（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-SYSTEM-011
+    name: /login
+    path: /login
+    description: "/login：路径 /login"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/index.ts#/login（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-012
+    name: /oauth2-app/login
+    path: /oauth2-app/login
+    description: "/oauth2-app/login：路径 /oauth2-app/login"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/index.ts#/oauth2-app/login（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-013
+    name: 带token登录页面
+    path: /tokenLogin
+    description: "带token登录页面：路径 /tokenLogin"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/index.ts#/tokenLogin（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-014
+    name: 外部填报表单详情
+    path: /online/formUrlDetail/:id/:dataId
+    description: "外部填报表单详情：路径 /online/formUrlDetail/:id/:dataId"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/index.ts#/online/formUrlDetail/:id/:dataId（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-015
+    name: 外部填报表单新增
+    path: /online/formUrlAdd/:id
+    description: "外部填报表单新增：路径 /online/formUrlAdd/:id"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/index.ts#/online/formUrlAdd/:id（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-016
+    name: 外部填报表单编辑
+    path: /online/formUrlEdit/:id/:dataId
+    description: "外部填报表单编辑：路径 /online/formUrlEdit/:id/:dataId"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/index.ts#/online/formUrlEdit/:id/:dataId（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-017
+    name: 外部填报表单成功
+    path: /online/formUrlSuccess
+    description: "外部填报表单成功：路径 /online/formUrlSuccess"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/index.ts#/online/formUrlSuccess（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-018
+    name: wps文件预览
+    path: /onlinePreview
+    description: "wps文件预览：路径 /onlinePreview"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/index.ts#/onlinePreview（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-019
+    name: MainOut
+    path: /main-out
+    description: "MainOut：路径 /main-out"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/mainOut.ts#/main-out（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-020
+    name: /about
+    path: /about
+    description: "/about：路径 /about"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/modules/about.ts#/about（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-DEMO-021
+    name: /charts
+    path: /charts
+    description: "/charts：路径 /charts"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/modules/demo/charts.ts#/charts（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-DEMO-022
+    name: /comp
+    path: /comp
+    description: "/comp：路径 /comp"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/modules/demo/comp.ts#/comp（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-DEMO-023
+    name: /feat
+    path: /feat
+    description: "/feat：路径 /feat"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/modules/demo/feat.ts#/feat（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-DEMO-024
+    name: /frame
+    path: /frame
+    description: "/frame：路径 /frame"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/modules/demo/iframe.ts#/frame（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-DEMO-025
+    name: /page-demo
+    path: /page-demo
+    description: "/page-demo：路径 /page-demo"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/modules/demo/page.ts#/page-demo（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-DEMO-026
+    name: /setup
+    path: /setup
+    description: "/setup：路径 /setup"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/modules/demo/setup.ts#/setup（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-VUE3-027
+    name: AI助手
+    path: /ai
+    description: "AI助手：路径 /ai"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/router/routes/staticRouter.ts#/ai（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-028
+    name: AI聊天
+    path: /ai/app/chat/:appId
+    description: "AI聊天：路径 /ai/app/chat/:appId"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/airag/aiapp/chat/route/register.ts#/ai/app/chat/:appId（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-029
+    name: AI聊天
+    path: /ai/app/chatIcon/:appId
+    description: "AI聊天：路径 /ai/app/chatIcon/:appId"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/airag/aiapp/chat/route/register.ts#/ai/app/chatIcon/:appId（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-030
+    name: ai聊天
+    path: /ai/chat
+    description: "ai聊天：路径 /ai/chat"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/airag/aiapp/chat/route/register.ts#/ai/chat（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-031
+    name: AI助手
+    path: /ai/chat/:appId
+    description: "AI助手：路径 /ai/chat/:appId"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/airag/aiapp/chat/route/register.ts#/ai/chat/:appId（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-032
+    name: AI聊天
+    path: /ai/chat/portal
+    description: "AI聊天：路径 /ai/chat/portal"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/airag/aiapp/chat/route/register.ts#/ai/chat/portal（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-033
+    name: 同步数据库
+    path: /online/cgformList/
+    description: "同步数据库：路径 /online/cgformList/"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgform/hooks/useCgformList.ts#/online/cgformList/（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-034
+    name: OnlCgformAuto
+    path: /online-auto-cgform-router
+    description: "OnlCgformAuto：路径 /online-auto-cgform-router"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgform/router/cgformRouter.ts#/online-auto-cgform-router（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-035
+    name: AUTO在线表单
+    path: /online/cgformList/:id
+    description: "AUTO在线表单：路径 /online/cgformList/:id"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgform/router/cgformRouter.ts#/online/cgformList/:id（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-036
+    name: AUTO在线树表单
+    path: /online/cgformTreeList/:id
+    description: "AUTO在线树表单：路径 /online/cgformTreeList/:id"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgform/router/cgformRouter.ts#/online/cgformTreeList/:id（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-037
+    name: AUTO在线ERP表单
+    path: /online/cgformErpList/:id
+    description: "AUTO在线ERP表单：路径 /online/cgformErpList/:id"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgform/router/cgformRouter.ts#/online/cgformErpList/:id（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-038
+    name: AUTO在线一对多内嵌
+    path: /online/cgformInnerTableList/:id
+    description: "AUTO在线一对多内嵌：路径 /online/cgformInnerTableList/:id"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgform/router/cgformRouter.ts#/online/cgformInnerTableList/:id（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-039
+    name: AUTO在线Tab风格
+    path: /online/cgformTabList/:id
+    description: "AUTO在线Tab风格：路径 /online/cgformTabList/:id"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgform/router/cgformRouter.ts#/online/cgformTabList/:id（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-040
+    name: Online表单外部页面
+    path: /online/cgform/share
+    description: "Online表单外部页面：路径 /online/cgform/share"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgform/share/route/index.ts#/online/cgform/share（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-041
+    name: "登录 · Online表单"
+    path: /online/cgform/share/login
+    description: "登录 · Online表单：路径 /online/cgform/share/login"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgform/share/route/index.ts#/online/cgform/share/login（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-042
+    name: OnlCgreportAuto
+    path: /online-auto-cgreport-router
+    description: "OnlCgreportAuto：路径 /online-auto-cgreport-router"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgreport/router/cgreportRouter.ts#/online-auto-cgreport-router（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-043
+    name: AUTO在线报表
+    path: /online/cgreport/:id
+    description: "AUTO在线报表：路径 /online/cgreport/:id"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/cgreport/router/cgreportRouter.ts#/online/cgreport/:id（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-044
+    name: OnlGraphreportAuto
+    path: /online-auto-graphreport-router
+    description: "OnlGraphreportAuto：路径 /online-auto-graphreport-router"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/graphreport/router/graphreportRouter.ts#/online-auto-graphreport-router（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-ONLINE-045
+    name: AUTO在线图表
+    path: /online/graphreport/chart/:code
+    description: "AUTO在线图表：路径 /online/graphreport/chart/:code"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/src/views/super/online/graphreport/router/graphreportRouter.ts#/online/graphreport/chart/:code（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-PLATFORM-046
+    name: /getUserInfoById
+    path: /getUserInfoById
+    description: "/getUserInfoById：路径 /getUserInfoById"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/tests/server/routes.ts#/getUserInfoById（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-PLATFORM-047
+    name: /upload
+    path: /upload
+    description: "/upload：路径 /upload"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgBoot/jeecgboot-vue3/tests/server/routes.ts#/upload（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-UNIAPP-048
+    name: 通讯录
+    path: /pages/demo/tree
+    description: "通讯录：路径 /pages/demo/tree"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgUniapp/src/pages-home/demo/demo.vue#/pages/demo/tree（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-UNIAPP-049
+    name: 单选多选
+    path: /pages/demo/indexBar
+    description: "单选多选：路径 /pages/demo/indexBar"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgUniapp/src/pages-home/demo/demo.vue#/pages/demo/indexBar（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-UNIAPP-050
+    name: 表单
+    path: /pages/demo/selectPicker
+    description: "表单：路径 /pages/demo/selectPicker"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgUniapp/src/pages-home/demo/demo.vue#/pages/demo/selectPicker（tier=L1）
+    # evidence: FACT
+  - screenId: SCREEN-UNIAPP-051
+    name: /pages/login/loginOauth2
+    path: /pages/login/loginOauth2
+    description: "/pages/login/loginOauth2：路径 /pages/login/loginOauth2"
+    description_source: structure_derived
+    actions: []
+    events: []
+    # source: repos/JeecgUniapp/src/router/index.ts#/pages/login/loginOauth2（tier=L1）
+    # evidence: FACT

@@ -1,0 +1,10 @@
+# PREVIEW — pending human confirmation
+model_type: SCENARIO
+version: "6.0"
+domain: jeecg
+description: "jeecg-aio 逆向 M4 场景模型（跨聚合事件链）"
+
+event_scenarios:
+  []
+  # TODO: 无源码证据 —— 实测未发现「行为 A 发事件、行为 B 消费同一事件且操作不同聚合」
+  # 的跨聚合解耦链（跨服务边仅 2 条，集中在 seata 示例模块）；v6 允许零场景，不造假。

@@ -1,0 +1,552 @@
+model_type: EVENT
+version: "6.0"
+domain: jeecg
+description: "jeecg-aio 逆向 ME 事件模型（事件发布点 / 消息监听点）"
+
+events:
+  - id: EVT-DEMO-001
+    name: 发送消息事件
+    description: "发送消息：由 账号 调用 sendMessage 发出，目标 String message。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.SendMessageSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/vxe/websocket/VxeSocket.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-002
+    name: 发送消息事件
+    description: "发送消息：由 账号 调用 sendMessage 发出，目标 message。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.SendMessageSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/vxe/websocket/VxeSocket.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-003
+    name: 发送消息事件
+    description: "发送消息：由 账号 调用 sendMessage 发出，目标 VxeSocket.packageMessage(type。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.SendMessageSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/vxe/websocket/VxeSocket.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-004
+    name: 发送消息事件
+    description: "发送消息：由 公告 调用 sendMessage 发出，目标 @RequestBody MsgParams msgParams。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: SysAnnouncement.SendMessageSent
+    producer_behavior_ref: SysAnnouncement_Api
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/controller/SysMessageTemplateController.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-005
+    name: 发送消息事件
+    description: "发送消息：由 公告 调用 sendMessage 发出，目标 obj.toJSONString(。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: SysAnnouncement.SendMessageSent
+    producer_behavior_ref: SysAnnouncement_Api
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/controller/TestSocketController.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-006
+    name: 发送消息事件
+    description: "发送消息：由 公告 调用 sendMessage 发出，目标 userId。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: SysAnnouncement.SendMessageSent
+    producer_behavior_ref: SysAnnouncement_Api
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/controller/TestSocketController.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-007
+    name: 发送消息事件
+    description: "发送消息：由 公告 调用 sendMessage 发出，目标 messageDTO。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: SysAnnouncement.SendMessageSent
+    producer_behavior_ref: SysAnnouncement_Api
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/handle/impl/DdSendMsgHandle.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-008
+    name: 发送消息事件
+    description: "发送消息：由 公告 调用 sendMessage 发出，目标 MessageDTO messageDTO。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: SysAnnouncement.SendMessageSent
+    producer_behavior_ref: SysAnnouncement_Api
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/handle/impl/DdSendMsgHandle.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-009
+    name: 发送消息事件
+    description: "发送消息：由 公告 调用 sendMessage 发出，目标 sysUser.getId(。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: SysAnnouncement.SendMessageSent
+    producer_behavior_ref: SysAnnouncement_Api
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/handle/impl/SystemSendMsgHandle.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-010
+    name: 发送消息事件
+    description: "发送消息：由 公告 调用 sendMessage 发出，目标 String msgType。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: SysAnnouncement.SendMessageSent
+    producer_behavior_ref: SysAnnouncement_Api
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/util/PushMsgUtil.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-011
+    name: 发送消息事件
+    description: "发送消息：由 话题 调用 sendMessage 发出，目标 WebSocket.REDIS_TOPIC_NAME。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Chat2biTopic.SendMessageSent
+    producer_behavior_ref: Chat2biMessage_SysMessage
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/websocket/WebSocket.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-012
+    name: 发送消息事件
+    description: "发送消息：由 公告 调用 sendMessage 发出，目标 String userId。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: SysAnnouncement.SendMessageSent
+    producer_behavior_ref: SysAnnouncement_Api
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/websocket/WebSocket.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-MESSAGE-013
+    name: 发送消息事件
+    description: "发送消息：由 公告 调用 sendMessage 发出，目标 String[] userIds。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: SysAnnouncement.SendMessageSent
+    producer_behavior_ref: SysAnnouncement_Api
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/websocket/WebSocket.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-SYSTEM-014
+    name: 发送消息事件
+    description: "发送消息：由 角色资源权限 调用 sendMessage 发出，目标 userIds。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Permissions.SendMessageSent
+    producer_behavior_ref: Permissions_Sys
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysAnnouncementController.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-SYSTEM-015
+    name: convertAndSend事件
+    description: "convertAndSend：由 话题 调用 convertAndSend 发出，目标 GlobalConstants.REDIS_TOPIC_NAME。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Chat2biTopic.ConvertAndSendSent
+    producer_behavior_ref: SysAnnouncement_Common
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 convertAndSend 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/service/impl/SysGatewayRouteServiceImpl.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-SYSTEM-016
+    name: 发送消息事件
+    description: "发送消息：由 角色资源权限 调用 sendMessage 发出，目标 MessageDTO message。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Permissions.SendMessageSent
+    producer_behavior_ref: Permissions_Sys
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/service/impl/ThirdAppDingtalkServiceImpl.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-PLATFORM-017
+    name: publishEvent事件
+    description: "publishEvent：由 配置信息 调用 publishEvent 发出，目标 new RefreshRoutesEvent(this。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: ConfigInfo.PublishEventSent
+    producer_behavior_ref: ConfigInfo_Auth
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 publishEvent 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-cloud-gateway/src/main/java/org/jeecg/loader/DynamicRouteLoader.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-018
+    name: 发送消息事件
+    description: "发送消息：由 订单客户 调用 sendMessage 发出，目标 CloudConstant.MQ_JEECG_PLACE_ORDER。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: JeecgOrderCustomer.SendMessageSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rabbitmq/src/main/java/org/jeecg/modules/test/rabbitmq/controller/JeecgMqTestController.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-019
+    name: 发送消息事件
+    description: "发送消息：由 订单客户 调用 sendMessage 发出，目标 CloudConstant.MQ_JEECG_PLACE_ORDER_TIME。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: JeecgOrderCustomer.SendMessageSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rabbitmq/src/main/java/org/jeecg/modules/test/rabbitmq/controller/JeecgMqTestController.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-020
+    name: publishEvent事件
+    description: "publishEvent：由 示例业务表 调用 publishEvent 发出，目标 CloudConstant.MQ_DEMO_BUS_EVENT。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Demo.PublishEventSent
+    producer_behavior_ref: Demo_Mcp
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 publishEvent 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rabbitmq/src/main/java/org/jeecg/modules/test/rabbitmq/controller/JeecgMqTestController.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-021
+    name: 发送消息事件
+    description: "发送消息：由 账号 调用 sendMessage 发出，目标 String handlerName。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.SendMessageSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-common/src/main/java/org/jeecg/common/modules/redis/client/JeecgRedisClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-022
+    name: publishEvent事件
+    description: "publishEvent：由 账号 调用 publishEvent 发出，目标 String handlerName。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.PublishEventSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 publishEvent 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rabbitmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-023
+    name: publishEvent事件
+    description: "publishEvent：由 账号 调用 publishEvent 发出，目标 new JeecgRemoteApplicationEvent(eventObj。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.PublishEventSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 publishEvent 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rabbitmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-024
+    name: convertAndSend事件
+    description: "convertAndSend：由 账号 调用 convertAndSend 发出，目标 topicExchange.getName(。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.ConvertAndSendSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 convertAndSend 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rabbitmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-025
+    name: 发送消息事件
+    description: "发送消息：由 账号 调用 sendMessage 发出，目标 String queueName。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.SendMessageSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rabbitmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-026
+    name: convertAndSend事件
+    description: "convertAndSend：由 账号 调用 convertAndSend 发出，目标 DelayExchangeBuilder.DELAY_EXCHANGE。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.ConvertAndSendSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 convertAndSend 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rabbitmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-027
+    name: convertAndSend事件
+    description: "convertAndSend：由 账号 调用 convertAndSend 发出，目标 DelayExchangeBuilder.DEFAULT_DELAY_EXCHANGE。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.ConvertAndSendSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 convertAndSend 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rabbitmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-028
+    name: 发送消息事件
+    description: "发送消息：由 账号 调用 sendMessage 发出，目标 String topic。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.SendMessageSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendMessage 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rocketmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-029
+    name: convertAndSend事件
+    description: "convertAndSend：由 账号 调用 convertAndSend 发出，目标 topic。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.ConvertAndSendSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 convertAndSend 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rocketmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-030
+    name: asyncSend事件
+    description: "asyncSend：由 账号 调用 asyncSend 发出，目标 topic。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.AsyncSendSent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 asyncSend 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rocketmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-STARTER-031
+    name: sendOneWay事件
+    description: "sendOneWay：由 账号 调用 sendOneWay 发出，目标 topic。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: Account.SendOneWaySent
+    producer_behavior_ref: Account_Test
+    subscriber_behavior_refs: []
+    payload: []
+    triggerCondition: "调用 sendOneWay 成功后发出"
+    # TODO: 无源码证据（顺序语义未取得证据）
+    ordering: none
+    # source: repos/jeecg-boot-starter/jeecg-boot-starter-rocketmq/src/main/java/org/jeecg/boot/starter/rabbitmq/client/RabbitMqClient.java#EVENT_PUBLISH（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-032
+    name: HelloReceiver1消息已接收
+    description: "HelloReceiver1：由 @RabbitListener(queues = CloudConstant.MQ_JEECG_PLACE_ORDER) 声明的消息监听消费。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: HelloReceiver1.Consumed
+    producer_behavior_ref: Account_Demo7
+    # INFERRED: 生产者行为未取得源码证据，按同域消费行为登记（tier=L1 只给存在性，不给引用绑定）
+    subscriber_behavior_refs: "['Account_Demo7']"
+    payload: []
+    triggerCondition: "@RabbitListener(queues = CloudConstant.MQ_JEECG_PLACE_ORDER)"
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rabbitmq/src/main/java/org/jeecg/modules/test/rabbitmq/listener/HelloReceiver1.java#HelloReceiver1（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-033
+    name: HelloReceiver2消息已接收
+    description: "HelloReceiver2：由 @RabbitListener(queues = CloudConstant.MQ_JEECG_PLACE_ORDER) 声明的消息监听消费。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: HelloReceiver2.Consumed
+    producer_behavior_ref: Account_Demo8
+    # INFERRED: 生产者行为未取得源码证据，按同域消费行为登记（tier=L1 只给存在性，不给引用绑定）
+    subscriber_behavior_refs: "['Account_Demo8']"
+    payload: []
+    triggerCondition: "@RabbitListener(queues = CloudConstant.MQ_JEECG_PLACE_ORDER)"
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rabbitmq/src/main/java/org/jeecg/modules/test/rabbitmq/listener/HelloReceiver2.java#HelloReceiver2（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-034
+    name: HelloReceiver3消息已接收
+    description: "HelloReceiver3#onMessage：由 @RabbitListener(queues = CloudConstant.MQ_JEECG_PLACE_ORDER) 声明的消息监听消费。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: HelloReceiver3.Consumed
+    producer_behavior_ref: Account_Demo9
+    # INFERRED: 生产者行为未取得源码证据，按同域消费行为登记（tier=L1 只给存在性，不给引用绑定）
+    subscriber_behavior_refs: "['Account_Demo9']"
+    payload: []
+    triggerCondition: "@RabbitListener(queues = CloudConstant.MQ_JEECG_PLACE_ORDER)"
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rabbitmq/src/main/java/org/jeecg/modules/test/rabbitmq/listener/HelloReceiver3.java#HelloReceiver3#onMessage（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-035
+    name: HelloTimeReceiver消息已接收
+    description: "HelloTimeReceiver：由 @RabbitListener(queues = CloudConstant.MQ_JEECG_PLACE_ORDER_ 声明的消息监听消费。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: HelloTimeReceiver.Consumed
+    producer_behavior_ref: Account_Demo10
+    # INFERRED: 生产者行为未取得源码证据，按同域消费行为登记（tier=L1 只给存在性，不给引用绑定）
+    subscriber_behavior_refs: "['Account_Demo10']"
+    payload: []
+    triggerCondition: "@RabbitListener(queues = CloudConstant.MQ_JEECG_PLACE_ORDER_TIME)"
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rabbitmq/src/main/java/org/jeecg/modules/test/rabbitmq/listener/HelloTimeReceiver.java#HelloTimeReceiver（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-036
+    name: HelloReceiver1消息已接收
+    description: "HelloReceiver1：由 @RocketMQMessageListener(topic = CloudConstant.MQ_JEECG_PLAC 声明的消息监听消费。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: HelloReceiver1.Consumed
+    producer_behavior_ref: Account_Demo7
+    # INFERRED: 生产者行为未取得源码证据，按同域消费行为登记（tier=L1 只给存在性，不给引用绑定）
+    subscriber_behavior_refs: "['Account_Demo7']"
+    payload: []
+    triggerCondition: "@RocketMQMessageListener(topic = CloudConstant.MQ_JEECG_PLACE_ORDER, consumerGroup = \"helloReceiver1\")"
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rocketmq/src/main/java/org/jeecg/modules/test/rocketmq/listener/HelloReceiver1.java#HelloReceiver1（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-037
+    name: HelloReceiver2消息已接收
+    description: "HelloReceiver2：由 @RocketMQMessageListener(topic = CloudConstant.MQ_JEECG_PLAC 声明的消息监听消费。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: HelloReceiver2.Consumed
+    producer_behavior_ref: Account_Demo8
+    # INFERRED: 生产者行为未取得源码证据，按同域消费行为登记（tier=L1 只给存在性，不给引用绑定）
+    subscriber_behavior_refs: "['Account_Demo8']"
+    payload: []
+    triggerCondition: "@RocketMQMessageListener(topic = CloudConstant.MQ_JEECG_PLACE_ORDER, consumerGroup = \"helloReceiver2\")"
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rocketmq/src/main/java/org/jeecg/modules/test/rocketmq/listener/HelloReceiver2.java#HelloReceiver2（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-038
+    name: HelloReceiver3消息已接收
+    description: "HelloReceiver3：由 @RocketMQMessageListener(topic = CloudConstant.MQ_JEECG_PLAC 声明的消息监听消费。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: HelloReceiver3.Consumed
+    producer_behavior_ref: Account_Demo13
+    # INFERRED: 生产者行为未取得源码证据，按同域消费行为登记（tier=L1 只给存在性，不给引用绑定）
+    subscriber_behavior_refs: "['Account_Demo13']"
+    payload: []
+    triggerCondition: "@RocketMQMessageListener(topic = CloudConstant.MQ_JEECG_PLACE_ORDER, consumerGroup = \"helloReceiver3\")"
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rocketmq/src/main/java/org/jeecg/modules/test/rocketmq/listener/HelloReceiver3.java#HelloReceiver3（tier=L1）
+    # evidence: FACT
+  - id: EVT-DEMO-039
+    name: HelloTimeReceiver消息已接收
+    description: "HelloTimeReceiver：由 @RocketMQMessageListener(topic = CloudConstant.MQ_JEECG_PLAC 声明的消息监听消费。"
+    description_source: structure_derived
+    # v6 合规注解
+    eventId: HelloTimeReceiver.Consumed
+    producer_behavior_ref: Account_Demo10
+    # INFERRED: 生产者行为未取得源码证据，按同域消费行为登记（tier=L1 只给存在性，不给引用绑定）
+    subscriber_behavior_refs: "['Account_Demo10']"
+    payload: []
+    triggerCondition: "@RocketMQMessageListener(topic = CloudConstant.MQ_JEECG_PLACE_ORDER_TIME, consumerGroup = \"helloTimeReceiver\")"
+    ordering: none
+    # source: repos/JeecgBoot/jeecg-boot/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rocketmq/src/main/java/org/jeecg/modules/test/rocketmq/listener/HelloTimeReceiver.java#HelloTimeReceiver（tier=L1）
+    # evidence: FACT

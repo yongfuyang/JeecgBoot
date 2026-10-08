@@ -1,0 +1,25 @@
+# PREVIEW — pending human confirmation
+model_type: FLOW
+version: "6.0"
+domain: jeecg
+description: "jeecg-aio 逆向 M6 流程模型（审批 / 协作流程）"
+
+flows:
+  - id: FLOW-BPMN-001
+    name: 请假流程示例流程
+    description: "请假流程示例：由流程引擎物理表 joa_demo 承载的流程定义/实例数据。"
+    description_source: structure_derived
+    flowType: APPROVAL
+    trigger:
+      triggerType: BEHAVIOR
+      behaviorRef: null
+    businessObjectRefs:
+      - AGG-BPMN-053
+    roleRefs: []
+    startActivity: null
+    endActivities: "[]"
+    nodeGraph:
+      nodes: []
+      edges: []
+    # source: repos/JeecgBoot/jeecg-boot/db/jeecgboot-mysql-5.7.sql#joa_demo（tier=L1）
+    # evidence: INFERRED
